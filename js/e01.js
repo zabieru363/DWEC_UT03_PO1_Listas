@@ -121,8 +121,11 @@ function test() {
     // ! PROBANDO LA FUNCIÓN GET.
     console.log(get(list, 0));
 
-    // ! PROBANDO LA FUNCIÓN TOSTRING
+    // ! PROBANDO LA FUNCIÓN TOSTRING.
     console.log(toString(list));
+
+    // ! PROBANDO LA FUNCIÓN INDEXOF.
+    console.log(indexOf(list, book5));
 }
 
 test();
