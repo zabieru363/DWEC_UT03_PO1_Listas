@@ -170,6 +170,9 @@ function test() {
 
     // ! PROBANDO LA FUNCIÓN LASTELEMENT.
     console.log(lastElement(list));
+
+    // ! PROBANDO LA FUNCIÓN REMOVE.
+    console.log(remove(list, 0));
 }
 
 test();
