@@ -27,6 +27,11 @@ function add(list, elem) {
     return list.push(elem); // No necesitamos retornar list.length ya que push devuelve el length del array.
 }
 
+function addAt(list, elem, index) {
+    list.splice(index, 0, elem);
+    return size(list);
+}
+
 function test() {
     const book1 = {
       ISBN: "978-84-9804-654-0",
