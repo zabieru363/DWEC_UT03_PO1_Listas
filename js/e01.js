@@ -47,7 +47,11 @@ function test() {
         author: "Jugador de LoL promedio",
         publicationDate: new Date(2021, 11, 3),
         price: 18,
-      };
+    };
+
+    // ! PROBANDO FUNCIÓN CREATE
+    const list = create();
+    console.log(list);
 }
 
 test();
