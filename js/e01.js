@@ -14,6 +14,10 @@ function isFull(list) {
     return list.length === MAX_SIZE;
 }
 
+function size(list) {
+    return list.length;
+}
+
 function test() {
     const book1 = {
       ISBN: "978-84-9804-654-0",
