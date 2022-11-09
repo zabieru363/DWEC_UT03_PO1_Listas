@@ -68,6 +68,10 @@ function firstElement(list) {
     return list[0];
 }
 
+function lastElement(list) {
+    return list[list.length - 1];
+}
+
 function test() {
     const book1 = {
       ISBN: "978-84-9804-654-0",
