@@ -1,5 +1,9 @@
 "use strict";
 
+function create() {
+    return [];
+}
+
 function test() {
     const book1 = {
       ISBN: "978-84-9804-654-0",
