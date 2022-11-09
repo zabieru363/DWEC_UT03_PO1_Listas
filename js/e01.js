@@ -196,6 +196,9 @@ function test() {
     } else {
         console.log("No se pudo eliminar el elemento.");
     }
+
+    // ! PROBANDO LA FUNCIÓN SET.
+    console.log(set(list, book4, 0));
 }
 
 test();
