@@ -118,7 +118,7 @@ function indexOf(list, elem) {
  * @returns La posición del elemento, -1 si no lo encuentra.
  */
 function lastIndexOf(list, elem) {
-    return indexOf([...list.reverse()], elem);
+    return indexOf([...list].reverse(), elem);
 }
 
 /**
