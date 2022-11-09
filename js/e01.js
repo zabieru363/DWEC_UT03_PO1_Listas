@@ -72,6 +72,10 @@ function lastElement(list) {
     return list[list.length - 1];
 }
 
+function remove(list, index) {
+    return list.splice(index, 1);
+}
+
 function test() {
     const book1 = {
       ISBN: "978-84-9804-654-0",
