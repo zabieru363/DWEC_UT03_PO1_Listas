@@ -39,8 +39,8 @@ function get(list, index) {
 }
 
 function toString(list) {
-    return list.reduce(function(str, book){
-        return str + book.title + " - ";
+    return list.reduce(function(str, book, index){
+        return index !== 0 ? str + " - " +  book.title  : str + book.title;
     }, "");
 }
 
