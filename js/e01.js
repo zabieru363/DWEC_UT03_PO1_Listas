@@ -38,6 +38,12 @@ function get(list, index) {
     });
 }
 
+function toString(list) {
+    return list.reduce(function(str, book){
+        return str + book.title + " - ";
+    }, "");
+}
+
 function test() {
     const book1 = {
       ISBN: "978-84-9804-654-0",
