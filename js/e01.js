@@ -44,6 +44,17 @@ function toString(list) {
     }, "");
 }
 
+function indexOf(list, elem) {
+    let pos = 0;
+
+    pos = list.findIndex(function(book, index) {
+        if(elem.ISBN === book.ISBN) return index;
+        else return -1;
+    });
+
+    return pos;
+}
+
 function test() {
     const book1 = {
       ISBN: "978-84-9804-654-0",
