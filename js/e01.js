@@ -76,6 +76,18 @@ function remove(list, index) {
     return list.splice(index, 1);
 }
 
+function removeElement(list, elem) {
+    let removed = false;
+    const pos = indexOf(elem);
+
+    if(pos !== 1) {
+        list.splice(pos, 1);
+        removed = true;
+    }
+
+    return removed;
+}
+
 function test() {
     const book1 = {
       ISBN: "978-84-9804-654-0",
