@@ -32,6 +32,12 @@ function addAt(list, elem, index) {
     return size(list);
 }
 
+function get(list, index) {
+    return list.find(function(book, pos) {
+        if(pos === index) return book;
+    });
+}
+
 function test() {
     const book1 = {
       ISBN: "978-84-9804-654-0",
