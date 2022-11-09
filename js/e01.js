@@ -78,6 +78,9 @@ function test() {
 
     // ! PROBANDO FUNCIÓN SIZE.
     console.log("Número de elementos en la lista " + size(list));
+
+    // ! PROBANDO LA FUNCIÓN ADD.
+    console.log("Número de elementos en la lista " + add(list, book1));
 }
 
 test();
