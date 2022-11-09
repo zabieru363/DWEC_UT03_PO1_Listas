@@ -45,13 +45,9 @@ function toString(list) {
 }
 
 function indexOf(list, elem) {
-    let pos = 0;
-
-    pos = list.findIndex(function(book) {
+    return list.findIndex(function(book) {
         return elem.ISBN === book.ISBN;
     });
-
-    return pos;
 }
 
 function test() {
