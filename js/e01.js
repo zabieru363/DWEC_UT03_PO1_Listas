@@ -134,6 +134,9 @@ function test() {
     // ! PROBANDO LA FUNCIÓN LASTINDEXOF.
     pos = lastIndexOf(list, book1);
     console.log(pos !== -1 ? "El elemento se encuentra en la posición " + pos : "Elemento no encontrado");
+
+    // ! PROBANDO LA FUNCIÓN CAPACITY
+    console.log("Número máximo de elementos que se pueden almacenar en la lista " + capacity());
 }
 
 test();
