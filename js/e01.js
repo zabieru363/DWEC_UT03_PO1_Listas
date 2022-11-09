@@ -64,6 +64,9 @@ function test() {
 
     // ! PROBANDO FUNCIÓN ISEMPTY
     console.log(isEmpty(list) ? "La lista está vacía" : "");
+
+    // ! PROBANDO FUNCIÓN ISFULL
+    console.log(isFull(list) ? "La lista está llena" : "");
 }
 
 test();
