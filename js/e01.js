@@ -63,14 +63,17 @@ function test() {
         price: 18,
     };
 
-    // ! PROBANDO FUNCIÓN CREATE
+    // ! PROBANDO FUNCIÓN CREATE.
     const list = create();
 
-    // ! PROBANDO FUNCIÓN ISEMPTY
+    // ! PROBANDO FUNCIÓN ISEMPTY.
     console.log(isEmpty(list) ? "La lista está vacía" : "");
 
-    // ! PROBANDO FUNCIÓN ISFULL
+    // ! PROBANDO FUNCIÓN ISFULL.
     console.log(isFull(list) ? "La lista está llena" : "");
+
+    // ! PROBANDO FUNCIÓN SIZE.
+    console.log("Número de elementos en la lista " + size(list));
 }
 
 test();
