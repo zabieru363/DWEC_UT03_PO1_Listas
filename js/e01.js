@@ -91,6 +91,11 @@ function test() {
 
     // ! PROBANDO LA FUNCIÓN ADD.
     console.log("Número de elementos en la lista " + add(list, book1));
+
+    // ! PROBANDO LA FUNCIÓN ADDAT
+    console.log("Número de elementos en la lista " + addAt(list, book3, 0));
+
+    console.log(list);
 }
 
 test();
