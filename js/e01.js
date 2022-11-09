@@ -156,6 +156,9 @@ function test() {
     console.log("Número de elementos en la lista " + add(list, book1));
     console.log("Número de elementos en la lista " + add(list, book2));
     console.log("Número de elementos en la lista " + add(list, book3));
+
+    // ! PROBANDO LA FUNCIÓN FIRSTELEMENT.
+    console.log(firstElement(list));
 }
 
 test();
