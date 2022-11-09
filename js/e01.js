@@ -55,7 +55,9 @@ function test() {
 
     // ! PROBANDO FUNCIÓN CREATE
     const list = create();
-    console.log(list);
+
+    // ! PROBANDO FUNCIÓN ISEMPTY
+    console.log(isEmpty(list) ? "La lista está vacía" : "");
 }
 
 test();
