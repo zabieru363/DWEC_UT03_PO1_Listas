@@ -4,6 +4,10 @@ function create() {
     return [];
 }
 
+function isEmpty(list) {
+    return list.length === 0;
+}
+
 function test() {
     const book1 = {
       ISBN: "978-84-9804-654-0",
