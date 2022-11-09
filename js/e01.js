@@ -78,7 +78,7 @@ function remove(list, index) {
 
 function removeElement(list, elem) {
     let removed = false;
-    const pos = indexOf(elem);
+    const pos = indexOf(list, elem);
 
     if(pos !== 1) {
         list.splice(pos, 1);
@@ -185,6 +185,13 @@ function test() {
 
     // ! PROBANDO LA FUNCIÓN REMOVE.
     console.log(remove(list, 0));
+
+    // ! PROBANDO LA FUNCIÓN REMOVEELEMENT.
+    if(removeElement(list, book2)) {
+        console.log("El elemento se ha eliminado correctamente");
+    } else {
+        console.log("No se pudo eliminar el elemento.");
+    }
 }
 
 test();
