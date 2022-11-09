@@ -1,7 +1,9 @@
 // ! COSAS A TENER EN CUENTA:
-/*- En la función add también es posible hacer un return de
+/* - En la función add también es posible hacer un return de
 size(list) o de list.length pero prefiero retornar list.push(elem)
 ya que es mucho más sencillo y se escribe menos código. */
+/* - La función capacity no necesita el parametro list ya que tiene
+acceso a la constante MAX_SIZE por lo que no es necesario pasarle nada. */
 
 "use strict";
 
