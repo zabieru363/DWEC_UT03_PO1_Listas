@@ -1,5 +1,7 @@
 "use strict";
 
+const MAX_SIZE = 5;
+
 function create() {
     return [];
 }
