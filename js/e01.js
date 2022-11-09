@@ -163,6 +163,9 @@ function test() {
 
     // ! PROBANDO LA FUNCIÓN FIRSTELEMENT.
     console.log(firstElement(list));
+
+    // ! PROBANDO LA FUNCIÓN LASTELEMENT.
+    console.log(lastElement(list));
 }
 
 test();
