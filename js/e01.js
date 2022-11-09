@@ -50,6 +50,10 @@ function indexOf(list, elem) {
     });
 }
 
+function lastIndexOf(list, elem) {
+    return indexOf(list.reverse(), elem);
+}
+
 function test() {
     const book1 = {
       ISBN: "978-84-9804-654-0",
