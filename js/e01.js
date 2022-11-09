@@ -51,7 +51,7 @@ function indexOf(list, elem) {
 }
 
 function lastIndexOf(list, elem) {
-    return indexOf(list.reverse(), elem);
+    return indexOf([...list.reverse()], elem);
 }
 
 function test() {
@@ -125,6 +125,10 @@ function test() {
 
     // ! PROBANDO LA FUNCIÓN INDEXOF.
     let pos = indexOf(list, book1);
+    console.log(pos !== -1 ? "El elemento se encuentra en la posición " + pos : "Elemento no encontrado");
+    
+    // ! PROBANDO LA FUNCIÓN LASTINDEXOF.
+    pos = lastIndexOf(list, book1);
     console.log(pos !== -1 ? "El elemento se encuentra en la posición " + pos : "Elemento no encontrado");
 }
 
