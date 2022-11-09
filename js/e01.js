@@ -88,6 +88,10 @@ function removeElement(list, elem) {
     return removed;
 }
 
+function set(list, elem, index) {
+    return list.splice(index, 1, elem);
+}
+
 function test() {
     const book1 = {
       ISBN: "978-84-9804-654-0",
