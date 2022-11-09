@@ -47,9 +47,8 @@ function toString(list) {
 function indexOf(list, elem) {
     let pos = 0;
 
-    pos = list.findIndex(function(book, index) {
-        if(elem.ISBN === book.ISBN) return index;
-        else return -1;
+    pos = list.findIndex(function(book) {
+        return elem.ISBN === book.ISBN;
     });
 
     return pos;
@@ -125,7 +124,8 @@ function test() {
     console.log(toString(list));
 
     // ! PROBANDO LA FUNCIÓN INDEXOF.
-    console.log(indexOf(list, book5));
+    let pos = indexOf(list, book1);
+    console.log(pos !== -1 ? "El elemento se encuentra en la posición " + pos : "Elemento no encontrado");
 }
 
 test();
