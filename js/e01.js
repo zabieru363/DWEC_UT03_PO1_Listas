@@ -1,3 +1,8 @@
+// ! COSAS A TENER EN CUENTA:
+/*- En la función add también es posible hacer un return de
+size(list) o de list.length pero prefiero retornar list.push(elem)
+ya que es mucho más sencillo y se escribe menos código. */
+
 "use strict";
 
 const MAX_SIZE = 5;
