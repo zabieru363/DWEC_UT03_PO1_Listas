@@ -109,6 +109,9 @@ function test() {
 
     // ! PROBANDO LA FUNCIÓN GET.
     console.log(get(list, 0));
+
+    // ! PROBANDO LA FUNCIÓN TOSTRING
+    console.log(toString(list));
 }
 
 test();
