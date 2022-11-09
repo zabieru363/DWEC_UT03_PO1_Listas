@@ -147,6 +147,11 @@ function test() {
     // ! PROBANDO LA FUNCIÓN CLEAR.
     clear(list);
     console.log("Número de elementos de la lista " + size(list));
+
+    // * Añadimos nuevos libros a la lista para probar las siguientes funciones.
+    console.log("Número de elementos en la lista " + add(list, book1));
+    console.log("Número de elementos en la lista " + add(list, book2));
+    console.log("Número de elementos en la lista " + add(list, book3));
 }
 
 test();
