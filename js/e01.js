@@ -57,6 +57,20 @@ function size(list) {
  * @returns El nuevo tamaño de la lista.
  */
 function add(list, elem) {
+    if(!elem.ISBN || !elem.title) {
+        throw {
+            name : "Error de tipos:",
+            message : "El elemento no es un libro"
+        };
+    }
+
+    if(isFull(list)) {
+        throw {
+            name : "Error de lista:",
+            message : "La lista está llena."
+        };
+    }
+
     return list.push(elem); // No necesitamos retornar list.length ya que push devuelve el length del array.
 }
 
@@ -70,6 +84,27 @@ function add(list, elem) {
  * @returns El nuevo tamaño de la lista.
  */
 function addAt(list, elem, index) {
+    if(!elem.ISBN || !elem.title) {
+        throw {
+            name : "Error de tipos:",
+            message : "El elemento no es un libro."
+        };
+    }
+
+    if(isFull(list)) {
+        throw {
+            name : "Error de lista:",
+            message : "La lista está llena."
+        };
+    }
+
+    if(index > MAX_SIZE) {
+        throw {
+            name : "Error de lista:",
+            message : "Indice fuera de limites de la lista.."
+        };
+    }
+
     list.splice(index, 0, elem);
     return size(list);
 }
@@ -82,6 +117,21 @@ function addAt(list, elem, index) {
  * @returns El elemento buscado.
  */
 function get(list, index) {
+    // Esta excepción me pareció necesaria.
+    if(isEmpty(list)) {
+        throw {
+            name : "Error de lista:",
+            message : "La lista está vacía."
+        };
+    }
+
+    if(index > MAX_SIZE) {
+        throw {
+            name : "Error de lista:",
+            message : "Indice fuera de limites de la lista.."
+        };
+    }
+
     return list.find(function(book, pos) {
         if(pos === index) return book;
     });
@@ -93,6 +143,14 @@ function get(list, index) {
  * @returns Un string con todos los titulos de los libros separados por -.
  */
 function toString(list) {
+    // Esta excepción me pareció necesaria.
+    if(isEmpty(list)) {
+        throw {
+            name : "Error de lista",
+            message : "La lista está vacía."
+        }
+    }
+
     return list.reduce(function(str, book, index){
         return index !== 0 ? str + " - " +  book.title : str + book.title;
     }, "");
@@ -105,6 +163,21 @@ function toString(list) {
  * @returns La posición del elemento, -1 si no lo encuentra.
  */
 function indexOf(list, elem) {
+    if(!elem.ISBN || !elem.title) {
+        throw {
+            name : "Error de tipos:",
+            message : "El elemento no es un libro."
+        };
+    }
+
+    // Esta excepción me pareció necesaria.
+    if(isEmpty(list)) {
+        throw {
+            name : "Error de lista:",
+            message : "La lista está vacía."
+        };
+    }
+
     return list.findIndex(function(book) {
         return elem.ISBN === book.ISBN;
     });
@@ -118,6 +191,21 @@ function indexOf(list, elem) {
  * @returns La posición del elemento, -1 si no lo encuentra.
  */
 function lastIndexOf(list, elem) {
+    if(!elem.ISBN || !elem.title) {
+        throw {
+            name : "Error de tipos:",
+            message : "El elemento no es un libro."
+        };
+    }
+
+    // Esta excepción me pareció necesaria.
+    if(isEmpty(list)) {
+        throw {
+            name : "Error de lista:",
+            message : "La lista está vacía."
+        };
+    }
+
     return indexOf([...list].reverse(), elem);
 }
 
@@ -143,6 +231,13 @@ function clear(list) {
  * @returns El primer elemento de la lista.
  */
 function firstElement(list) {
+    if(isEmpty(list)) {
+        throw {
+            name : "Error de lista:",
+            message : "La lista está vacía."
+        };
+    }
+
     return list[0];
 }
 
@@ -152,6 +247,13 @@ function firstElement(list) {
  * @returns El último elemento de la lista.
  */
 function lastElement(list) {
+    if(isEmpty(list)) {
+        throw {
+            name : "Error de lista:",
+            message : "La lista está vacía."
+        };
+    }
+
     return list[list.length - 1];
 }
 
@@ -163,6 +265,21 @@ function lastElement(list) {
  * @returns El elemento eliminado.
  */
 function remove(list, index) {
+    if(index > MAX_SIZE) {
+        throw {
+            name : "Error de lista:",
+            message : "Indice fuera de limites de la lista.."
+        };
+    }
+
+    // Esta excepción me pareció necesaria.
+    if(isEmpty(list)) {
+        throw {
+            name : "Error de lista",
+            message : "La lista está vacía."
+        }
+    }
+
     return list.splice(index, 1);   // Splice devuelve un array con los elementos eliminados.
 }
 
@@ -174,6 +291,21 @@ function remove(list, index) {
  * @returns True si se ha eliminado el libro, false si no es así.
  */
 function removeElement(list, elem) {
+    if(!elem.ISBN || !elem.title) {
+        throw {
+            name : "Error de tipos:",
+            message : "El elemento no es un libro."
+        };
+    }
+
+    // Esta excepción me pareció necesaria.
+    if(isEmpty(list)) {
+        throw {
+            name : "Error de lista",
+            message : "La lista está vacía."
+        }
+    }
+
     let removed = false;
     const pos = indexOf(list, elem);
 
@@ -194,6 +326,27 @@ function removeElement(list, elem) {
  * @returns El elemento anterior.
  */
 function set(list, elem, index) {
+    if(!elem.ISBN || !elem.title) {
+        throw {
+            name : "Error de tipos:",
+            message : "El elemento no es un libro."
+        };
+    }
+
+    if(index > MAX_SIZE) {
+        throw {
+            name : "Error de lista:",
+            message : "Indice fuera de limites de la lista.."
+        };
+    }
+
+    // Esta excepción me pareció necesaria.
+    if(isEmpty(list)) {
+        throw {
+            name : "Error de lista",
+            message : "La lista está vacía."
+        }
+    }
     return list.splice(index, 1, elem);
 }
 
@@ -261,26 +414,173 @@ function test() {
     // ! PROBANDO LA FUNCIÓN ADD.
     console.log("Número de elementos en la lista " + add(list, book1)); // Añado el libro 1.
 
+    // * ERRORES QUE ARROJA ADD.
+
+    // ? El elemento no es un libro.
+    try {
+        console.log("Número de elementos en la lista " + add(list, book5));
+    } catch(error) {
+        console.log(error.name + " " + error.message);  // Aquí se produce una excepción.
+    }
+
+    // ? La lista está llena.
+    console.log("Número de elementos en la lista " + add(list, book2));
+    console.log("Número de elementos en la lista " + add(list, book3));
+    console.log("Número de elementos en la lista " + add(list, book4));
+    console.log("Número de elementos en la lista " + add(list, book1));
+
+    try {
+        console.log("Número de elementos en la lista " + add(list, book1));
+    } catch(error) {
+        console.log(error.name + " " + error.message);  // Aquí se produce una excepción.
+    }
+
+    clear(list);    // Vaciamos la lista para probar las demás funciones.
+
     // ! PROBANDO LA FUNCIÓN ADDAT.
     console.log("Número de elementos en la lista " + addAt(list, book3, 0));    // Añado el libro 3 en la posición 0.
+
+    // * ERRORES QUE ARROJA ADDAT.
+
+    // ? El elemento no es un libro.
+    try {
+        console.log("Número de elementos en la lista " + addAt(list, book5, 1));
+    } catch(error) {
+        console.log(error.name + " " + error.message);  // Aquí se produce una excepción.
+    }
+
+    // ? La lista está llena.
+    console.log("Número de elementos en la lista " + addAt(list, book1, 0));
+    console.log("Número de elementos en la lista " + addAt(list, book1, 0));
+    console.log("Número de elementos en la lista " + addAt(list, book1, 0));
+    console.log("Número de elementos en la lista " + addAt(list, book1, 0));
+
+    try {
+        console.log("Número de elementos en la lista " + addAt(list, book2, 1));
+    } catch(error) {
+        console.log(error.name + " " + error.message);  // Aquí se produce una excepción.
+    }
+
+    clear(list);    // Vaciamos la lista para probar las demás funciones.
+
+    // ? El indice está fuera de los limites de la lista.
+    try {
+        console.log("Número de elementos en la lista " + addAt(list, book2, 22));
+    } catch(error) {
+        console.log(error.name + " " + error.message);  // Aquí se produce una excepción.
+    }
+
+    console.log("Número de elementos en la lista " + addAt(list, book1, 0));
+    console.log("Número de elementos en la lista " + addAt(list, book2, 0));
+    console.log("Número de elementos en la lista " + addAt(list, book3, 0));
+    console.log("Número de elementos en la lista " + addAt(list, book4, 0));
 
     // ! PROBANDO LA FUNCIÓN GET.
     console.log(get(list, 0));  // Cojo el elemento que está en la posición 0.
 
+    // * ERRORES QUE ARROJA GET.
+
+    // ? El indice está fuera de los limites de la lista.
+    try {
+        console.log(get(list, 22));
+    } catch(error) {
+        console.log(error.name + " " + error.message);  // Aquí se produce una excepción.
+    }
+
+    // ? La lista está vacía.
+    clear(list);
+
+    try {
+        console.log(get(list, 2));
+    } catch(error) {
+        console.log(error.name + " " + error.message);  // Aquí se produce una excepción.
+    }
+
+    console.log("Número de elementos en la lista " + addAt(list, book1, 0));
+    console.log("Número de elementos en la lista " + addAt(list, book2, 0));
+    console.log("Número de elementos en la lista " + addAt(list, book3, 0));
+    console.log("Número de elementos en la lista " + addAt(list, book4, 0));
+
     // ! PROBANDO LA FUNCIÓN TOSTRING.
-    console.log(toString(list));    // El libro negro del programador - El Quijote.
+    console.log(toString(list));    // Imprime todos los titulos de los libros.
+
+    // * ERRORES QUE ARROJA TOSTRING.
+
+    // ? La lista está vacía.
+    clear(list);
+
+    try {
+        console.log(toString(list));
+    } catch(error) {
+        console.log(error.name + " " + error.message);  // Aquí se produce una excepción.
+    }
+
+    console.log("Número de elementos en la lista " + addAt(list, book1, 0));
+    console.log("Número de elementos en la lista " + addAt(list, book2, 0));
+    console.log("Número de elementos en la lista " + addAt(list, book3, 0));
+    console.log("Número de elementos en la lista " + addAt(list, book4, 0));
 
     // ! PROBANDO LA FUNCIÓN INDEXOF.
     let pos = indexOf(list, book1);
     console.log(pos !== -1 ? "El elemento se encuentra en la posición " + pos : "Elemento no encontrado");  // Encuentra el libro
-    pos = indexOf(list, book5);
+    pos = indexOf(list, book6);
     console.log(pos !== -1 ? "El elemento se encuentra en la posición " + pos : "Elemento no encontrado");  // Aquí no lo encuentra.
+
+    // * ERRORES QUE ARROJA INDEXOF.
+
+    // ? El elemento no es un libro.
+    try {
+        pos = indexOf(list, book5);
+        console.log(pos !== -1 ? "El elemento se encuentra en la posición " + pos : "Elemento no encontrado"); 
+    } catch(error) {
+        console.log(error.name + " " + error.message);  // Aquí se produce una excepción.
+    }
+
+    // ? La lista está vacía.
+    clear(list);
+
+    try {
+        pos = indexOf(list, book2);
+        console.log(pos !== -1 ? "El elemento se encuentra en la posición " + pos : "Elemento no encontrado"); 
+    } catch(error) {
+        console.log(error.name + " " + error.message);  // Aquí se produce una excepción.
+    }
+
+    console.log("Número de elementos en la lista " + addAt(list, book1, 0));
+    console.log("Número de elementos en la lista " + addAt(list, book2, 0));
+    console.log("Número de elementos en la lista " + addAt(list, book3, 0));
+    console.log("Número de elementos en la lista " + addAt(list, book4, 0));
     
     // ! PROBANDO LA FUNCIÓN LASTINDEXOF.
     pos = lastIndexOf(list, book1);
     console.log(pos !== -1 ? "El elemento se encuentra en la posición " + pos : "Elemento no encontrado");  // Encuentra el libro
-    pos = lastIndexOf(list, book4);
+    pos = lastIndexOf(list, book6);
     console.log(pos !== -1 ? "El elemento se encuentra en la posición " + pos : "Elemento no encontrado");  // Aquí no lo encuentra.
+
+    // * ERRORES QUE ARROJA LASTINDEXOF.
+
+    // ? El elemento no es un libro.
+    try {
+        pos = lastIndexOf(list, book5);
+        console.log(pos !== -1 ? "El elemento se encuentra en la posición " + pos : "Elemento no encontrado"); 
+    } catch(error) {
+        console.log(error.name + " " + error.message);  // Aquí se produce una excepción.
+    }
+
+    // ? La lista está vacía.
+    clear(list);
+
+    try {
+        pos = indexOf(list, book2);
+        console.log(pos !== -1 ? "El elemento se encuentra en la posición " + pos : "Elemento no encontrado"); 
+    } catch(error) {
+        console.log(error.name + " " + error.message);  // Aquí se produce una excepción.
+    }
+
+    console.log("Número de elementos en la lista " + addAt(list, book1, 0));
+    console.log("Número de elementos en la lista " + addAt(list, book2, 0));
+    console.log("Número de elementos en la lista " + addAt(list, book3, 0));
+    console.log("Número de elementos en la lista " + addAt(list, book4, 0));
 
     // ! PROBANDO LA FUNCIÓN CAPACITY.
     console.log("Número máximo de elementos que se pueden almacenar en la lista " + capacity());    // 5
@@ -297,11 +597,63 @@ function test() {
     // ! PROBANDO LA FUNCIÓN FIRSTELEMENT.
     console.log(firstElement(list));    // Cojo el primer elemento de la lista.
 
+    // * ERRORES QUE ARROJA FIRSTELEMENT.
+
+    // ? La lista está vacía.
+    clear(list);
+
+    try {
+        console.log(firstElement(list));
+    } catch(error) {
+        console.log(error.name + " " + error.message);
+    }
+
+    console.log("Número de elementos en la lista " + add(list, book1));
+    console.log("Número de elementos en la lista " + add(list, book2));
+    console.log("Número de elementos en la lista " + add(list, book3));
+
     // ! PROBANDO LA FUNCIÓN LASTELEMENT.
     console.log(lastElement(list)); // Cojo el último elemento de la lista.
 
+    // * ERRORES QUE ARROJA LASTELEMENT.
+
+    // ? La lista está vacía.
+    clear(list);
+
+    try {
+        console.log(lastElement(list));
+    } catch(error) {
+        console.log(error.name + " " + error.message);
+    }
+
+    console.log("Número de elementos en la lista " + add(list, book1));
+    console.log("Número de elementos en la lista " + add(list, book2));
+    console.log("Número de elementos en la lista " + add(list, book3));
+
     // ! PROBANDO LA FUNCIÓN REMOVE.
     console.log(remove(list, 0));   // Quito el primer elemento de la lista.
+
+    // * ERRORES QUE ARROJA REMOVE.
+
+    // ? El indice está fuera de los limites de la lista.
+    try {
+        console.log(remove(list, 22));
+    } catch(error) {
+        console.log(error.name + " " + error.message);
+    }
+
+    // ? La lista está vacía.
+    clear(list);
+
+    try {
+        console.log(remove(list, 0));
+    } catch(error) {
+        console.log(error.name + " " + error.message);
+    }
+
+    console.log("Número de elementos en la lista " + add(list, book1));
+    console.log("Número de elementos en la lista " + add(list, book2));
+    console.log("Número de elementos en la lista " + add(list, book3));
 
     // ! PROBANDO LA FUNCIÓN REMOVEELEMENT.
     if(removeElement(list, book2)) {
@@ -310,8 +662,53 @@ function test() {
         console.log("No se pudo eliminar el elemento.");
     }
 
+    // * ERRORES QUE ARROJA REMOVE.
+
+    // ? El elemento no es un libro.
+    try {
+        console.log(removeElement(list, book5));
+    } catch(error) {
+        console.log(error.name + " " + error.message);
+    }
+
+    // ? La lista está vacía.
+    clear(list);
+
+    try {
+        console.log(remove(list, 0));
+    } catch(error) {
+        console.log(error.name + " " + error.message);
+    }
+
+    console.log("Número de elementos en la lista " + add(list, book3));
+
     // ! PROBANDO LA FUNCIÓN SET.
-    console.log(set(list, book4, 0));   // Reemplaza el único libro que hay en este momento (book3) por book4
+    console.log(set(list, book4, 0));   // Reemplaza el único libro que hay en este momento (book3) por book4.
+
+    // * ERRORES QUE ARROJA SET
+    
+    // ? El elemento no es un libro.
+    try {
+        console.log(set(list, book5, 0));
+    } catch(error) {
+        console.log(error.name + " " + error.message);
+    }
+
+    // ? El indice está fuera de los limites de la lista.
+    try {
+        console.log(set(list, book2, 22));
+    } catch(error) {
+        console.log(error.name + " " + error.message);
+    }
+
+    // ? La lista está vacía.
+    clear(list);
+
+    try {
+        console.log(set(list, book2, 0));
+    } catch(error) {
+        console.log(error.name + " " + error.message);
+    }
 }
 
 test();
