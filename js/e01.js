@@ -24,7 +24,11 @@ const dictionaryColors = {
     printMessage : "#00C2C8",
     functionTitle : "#00C800",
     exception : "#CD0000",
-    errorName : "#02006D"
+    errorName : "#02006D",
+
+    setColor : function(color) {
+        return "color: " + dictionaryColors[color];
+    }
 };
 
 // * FUNCIONES
