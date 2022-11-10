@@ -117,6 +117,14 @@ function addAt(list, elem, index) {
  * @returns El elemento buscado.
  */
 function get(list, index) {
+    // Esta excepción me pareció necesaria.
+    if(isEmpty(list)) {
+        throw {
+            name : "Error de lista:",
+            message : "La lista está vacía."
+        };
+    }
+
     if(index > MAX_SIZE) {
         throw {
             name : "Error de lista:",
