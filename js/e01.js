@@ -205,7 +205,7 @@ function lastIndexOf(list, elem) {
             message : "La lista está vacía."
         };
     }
-    
+
     return indexOf([...list].reverse(), elem);
 }
 
@@ -491,6 +491,31 @@ function test() {
     console.log(pos !== -1 ? "El elemento se encuentra en la posición " + pos : "Elemento no encontrado");  // Encuentra el libro
     pos = lastIndexOf(list, book6);
     console.log(pos !== -1 ? "El elemento se encuentra en la posición " + pos : "Elemento no encontrado");  // Aquí no lo encuentra.
+
+    // * ERRORES QUE ARROJA LASTINDEXOF.
+
+    // ? El elemento no es un libro.
+    try {
+        pos = lastIndexOf(list, book5);
+        console.log(pos !== -1 ? "El elemento se encuentra en la posición " + pos : "Elemento no encontrado"); 
+    } catch(error) {
+        console.log(error.name + " " + error.message);  // Aquí se produce una excepción.
+    }
+
+    // ? La lista está vacía.
+    clear(list);
+
+    try {
+        pos = indexOf(list, book2);
+        console.log(pos !== -1 ? "El elemento se encuentra en la posición " + pos : "Elemento no encontrado"); 
+    } catch(error) {
+        console.log(error.name + " " + error.message);  // Aquí se produce una excepción.
+    }
+
+    console.log("Número de elementos en la lista " + addAt(list, book1, 0));
+    console.log("Número de elementos en la lista " + addAt(list, book2, 0));
+    console.log("Número de elementos en la lista " + addAt(list, book3, 0));
+    console.log("Número de elementos en la lista " + addAt(list, book4, 0));
 
     // ! PROBANDO LA FUNCIÓN CAPACITY.
     console.log("Número máximo de elementos que se pueden almacenar en la lista " + capacity());    // 5
