@@ -237,7 +237,7 @@ function firstElement(list) {
             message : "La lista está vacía."
         };
     }
-    
+
     return list[0];
 }
 
@@ -538,6 +538,21 @@ function test() {
 
     // ! PROBANDO LA FUNCIÓN FIRSTELEMENT.
     console.log(firstElement(list));    // Cojo el primer elemento de la lista.
+
+    // * ERRORES QUE ARROJA FIRSTELEMENT.
+
+    // ? La lista está vacía.
+    clear(list);
+
+    try {
+        console.log(firstElement(list));
+    } catch(error) {
+        console.log(error.name + " " + error.message);
+    }
+
+    console.log("Número de elementos en la lista " + add(list, book1));
+    console.log("Número de elementos en la lista " + add(list, book2));
+    console.log("Número de elementos en la lista " + add(list, book3));
 
     // ! PROBANDO LA FUNCIÓN LASTELEMENT.
     console.log(lastElement(list)); // Cojo el último elemento de la lista.
