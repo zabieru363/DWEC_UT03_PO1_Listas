@@ -597,6 +597,28 @@ function test() {
     // ! PROBANDO LA FUNCIÓN REMOVE.
     console.log(remove(list, 0));   // Quito el primer elemento de la lista.
 
+    // * ERRORES QUE ARROJA REMOVE.
+
+    // ? El indice está fuera de los limites de la lista.
+    try {
+        console.log(remove(list, 22));
+    } catch(error) {
+        console.log(error.name + " " + error.message);
+    }
+
+    // ? La lista está vacía.
+    clear(list);
+
+    try {
+        console.log(remove(list, 0));
+    } catch(error) {
+        console.log(error.name + " " + error.message);
+    }
+
+    console.log("Número de elementos en la lista " + add(list, book1));
+    console.log("Número de elementos en la lista " + add(list, book2));
+    console.log("Número de elementos en la lista " + add(list, book3));
+
     // ! PROBANDO LA FUNCIÓN REMOVEELEMENT.
     if(removeElement(list, book2)) {
         console.log("El elemento se ha eliminado correctamente");   // Se ejecuta esto.
