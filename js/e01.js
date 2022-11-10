@@ -322,6 +322,41 @@ function test() {
     // ! PROBANDO LA FUNCIÓN ADDAT.
     console.log("Número de elementos en la lista " + addAt(list, book3, 0));    // Añado el libro 3 en la posición 0.
 
+    // * ERRORES QUE ARROJA ADDAT.
+
+    // ? El elemento no es un libro.
+    try {
+        console.log("Número de elementos en la lista " + addAt(list, book5, 1));
+    } catch(error) {
+        console.log(error.name + " " + error.message);  // Aquí se produce una excepción.
+    }
+
+    // ? La lista está llena.
+    console.log("Número de elementos en la lista " + addAt(list, book1, 0));
+    console.log("Número de elementos en la lista " + addAt(list, book1, 0));
+    console.log("Número de elementos en la lista " + addAt(list, book1, 0));
+    console.log("Número de elementos en la lista " + addAt(list, book1, 0));
+
+    try {
+        console.log("Número de elementos en la lista " + addAt(list, book2, 1));
+    } catch(error) {
+        console.log(error.name + " " + error.message);  // Aquí se produce una excepción.
+    }
+
+    clear(list);    // Vaciamos la lista para probar las demás funciones.
+
+    // ? El indice está fuera de los limites de la lista.
+    try {
+        console.log("Número de elementos en la lista " + addAt(list, book2, 22));
+    } catch(error) {
+        console.log(error.name + " " + error.message);  // Aquí se produce una excepción.
+    }
+
+    console.log("Número de elementos en la lista " + addAt(list, book1, 0));
+    console.log("Número de elementos en la lista " + addAt(list, book2, 0));
+    console.log("Número de elementos en la lista " + addAt(list, book3, 0));
+    console.log("Número de elementos en la lista " + addAt(list, book4, 0));
+
     // ! PROBANDO LA FUNCIÓN GET.
     console.log(get(list, 0));  // Cojo el elemento que está en la posición 0.
 
