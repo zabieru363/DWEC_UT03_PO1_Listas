@@ -57,6 +57,20 @@ function size(list) {
  * @returns El nuevo tamaño de la lista.
  */
 function add(list, elem) {
+    if(!elem.ISBN || !elem.title) {
+        throw {
+            name : "Error de tipos:",
+            message : "El elemento no es un libro"
+        };
+    }
+
+    if(isFull(list)) {
+        throw {
+            name : "Error de lista:",
+            message : "La lista está llena."
+        };
+    }
+
     return list.push(elem); // No necesitamos retornar list.length ya que push devuelve el length del array.
 }
 
