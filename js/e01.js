@@ -664,7 +664,7 @@ function test() {
 
     // * ERRORES QUE ARROJA REMOVE.
 
-    // ? El indice está fuera de los limites de la lista.
+    // ? El elemento no es un libro.
     try {
         console.log(removeElement(list, book5));
     } catch(error) {
@@ -683,7 +683,32 @@ function test() {
     console.log("Número de elementos en la lista " + add(list, book3));
 
     // ! PROBANDO LA FUNCIÓN SET.
-    console.log(set(list, book4, 0));   // Reemplaza el único libro que hay en este momento (book3) por book4
+    console.log(set(list, book4, 0));   // Reemplaza el único libro que hay en este momento (book3) por book4.
+
+    // * ERRORES QUE ARROJA SET
+    
+    // ? El elemento no es un libro.
+    try {
+        console.log(set(list, book5, 0));
+    } catch(error) {
+        console.log(error.name + " " + error.message);
+    }
+
+    // ? El indice está fuera de los limites de la lista.
+    try {
+        console.log(set(list, book2, 22));
+    } catch(error) {
+        console.log(error.name + " " + error.message);
+    }
+
+    // ? La lista está vacía.
+    clear(list);
+
+    try {
+        console.log(set(list, book2, 0));
+    } catch(error) {
+        console.log(error.name + " " + error.message);
+    }
 }
 
 test();
