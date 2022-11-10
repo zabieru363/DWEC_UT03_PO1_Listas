@@ -170,6 +170,14 @@ function indexOf(list, elem) {
         };
     }
 
+    // Esta excepción me pareció necesaria.
+    if(isEmpty(list)) {
+        throw {
+            name : "Error de lista:",
+            message : "La lista está vacía."
+        };
+    }
+
     return list.findIndex(function(book) {
         return elem.ISBN === book.ISBN;
     });
