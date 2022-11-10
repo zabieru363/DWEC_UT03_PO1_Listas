@@ -455,6 +455,21 @@ function test() {
     } catch(error) {
         console.log(error.name + " " + error.message);  // Aquí se produce una excepción.
     }
+
+    // ? La lista está vacía.
+    clear(list);
+
+    try {
+        pos = indexOf(list, book2);
+        console.log(pos !== -1 ? "El elemento se encuentra en la posición " + pos : "Elemento no encontrado"); 
+    } catch(error) {
+        console.log(error.name + " " + error.message);  // Aquí se produce una excepción.
+    }
+
+    console.log("Número de elementos en la lista " + addAt(list, book1, 0));
+    console.log("Número de elementos en la lista " + addAt(list, book2, 0));
+    console.log("Número de elementos en la lista " + addAt(list, book3, 0));
+    console.log("Número de elementos en la lista " + addAt(list, book4, 0));
     
     // ! PROBANDO LA FUNCIÓN LASTINDEXOF.
     pos = lastIndexOf(list, book1);
