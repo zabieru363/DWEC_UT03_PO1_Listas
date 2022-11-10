@@ -142,7 +142,7 @@ function toString(list) {
             message : "La lista está vacía."
         }
     }
-    
+
     return list.reduce(function(str, book, index){
         return index !== 0 ? str + " - " +  book.title : str + book.title;
     }, "");
@@ -385,7 +385,18 @@ function test() {
     }
 
     // ! PROBANDO LA FUNCIÓN TOSTRING.
-    console.log(toString(list));    // El libro negro del programador - El Quijote.
+    console.log(toString(list));    // Imprime todos los titulos de los libros.
+
+    // * ERRORES QUE ARROJA TOSTRING.
+
+    // ? La lista está vacía.
+    clear(list);
+
+    try {
+        console.log(toString(list));
+    } catch(error) {
+        console.log(error.name + " " + error.message);  // Aquí se produce una excepción.
+    }
 
     // ! PROBANDO LA FUNCIÓN INDEXOF.
     let pos = indexOf(list, book1);
