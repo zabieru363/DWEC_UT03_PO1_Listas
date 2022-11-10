@@ -326,6 +326,27 @@ function removeElement(list, elem) {
  * @returns El elemento anterior.
  */
 function set(list, elem, index) {
+    if(!elem.ISBN || !elem.title) {
+        throw {
+            name : "Error de tipos:",
+            message : "El elemento no es un libro."
+        };
+    }
+
+    if(index > MAX_SIZE) {
+        throw {
+            name : "Error de lista:",
+            message : "Indice fuera de limites de la lista.."
+        };
+    }
+
+    // Esta excepción me pareció necesaria.
+    if(isEmpty(list)) {
+        throw {
+            name : "Error de lista",
+            message : "La lista está vacía."
+        }
+    }
     return list.splice(index, 1, elem);
 }
 
