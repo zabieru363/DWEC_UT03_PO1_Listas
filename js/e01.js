@@ -275,6 +275,29 @@ function test() {
     // ! PROBANDO LA FUNCIÓN ADD.
     console.log("Número de elementos en la lista " + add(list, book1)); // Añado el libro 1.
 
+    // * ERRORES QUE ARROJA ADD.
+
+    // ? El elemento no es un libro.
+    try {
+        console.log("Número de elementos en la lista " + add(list, book5));
+    } catch(error) {
+        console.log(error.name + " " + error.message);  // Aquí se produce una excepción.
+    }
+
+    // ? La lista está llena.
+    console.log("Número de elementos en la lista " + add(list, book2));
+    console.log("Número de elementos en la lista " + add(list, book3));
+    console.log("Número de elementos en la lista " + add(list, book4));
+    console.log("Número de elementos en la lista " + add(list, book1));
+
+    try {
+        console.log("Número de elementos en la lista " + add(list, book1));
+    } catch(error) {
+        console.log(error.name + " " + error.message);  // Aquí se produce una excepción.
+    }
+
+    clear(list);    // Vaciamos la lista para probar las demás funciones.
+
     // ! PROBANDO LA FUNCIÓN ADDAT.
     console.log("Número de elementos en la lista " + addAt(list, book3, 0));    // Añado el libro 3 en la posición 0.
 
