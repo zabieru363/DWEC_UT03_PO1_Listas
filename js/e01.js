@@ -123,7 +123,7 @@ function get(list, index) {
             message : "Indice fuera de limites de la lista.."
         };
     }
-    
+
     return list.find(function(book, pos) {
         if(pos === index) return book;
     });
@@ -366,6 +366,15 @@ function test() {
 
     // ! PROBANDO LA FUNCIÓN GET.
     console.log(get(list, 0));  // Cojo el elemento que está en la posición 0.
+
+    // * ERRORES QUE ARROJA GET.
+
+    // ? El indice está fuera de los limites de la lista.
+    try {
+        console.log(get(list, 22));
+    } catch(error) {
+        console.log(error.name + " " + error.message);  // Aquí se produce una excepción.
+    }
 
     // ! PROBANDO LA FUNCIÓN TOSTRING.
     console.log(toString(list));    // El libro negro del programador - El Quijote.
