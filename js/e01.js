@@ -231,6 +231,13 @@ function clear(list) {
  * @returns El primer elemento de la lista.
  */
 function firstElement(list) {
+    if(isEmpty(list)) {
+        throw {
+            name : "Error de lista:",
+            message : "La lista está vacía."
+        };
+    }
+    
     return list[0];
 }
 
