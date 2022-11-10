@@ -169,7 +169,7 @@ function indexOf(list, elem) {
             message : "El elemento no es un libro."
         };
     }
-    
+
     return list.findIndex(function(book) {
         return elem.ISBN === book.ISBN;
     });
@@ -435,8 +435,18 @@ function test() {
     // ! PROBANDO LA FUNCIÓN INDEXOF.
     let pos = indexOf(list, book1);
     console.log(pos !== -1 ? "El elemento se encuentra en la posición " + pos : "Elemento no encontrado");  // Encuentra el libro
-    pos = indexOf(list, book5);
+    pos = indexOf(list, book6);
     console.log(pos !== -1 ? "El elemento se encuentra en la posición " + pos : "Elemento no encontrado");  // Aquí no lo encuentra.
+
+    // * ERRORES QUE ARROJA INDEXOF.
+
+    // ? El elemento no es un libro.
+    try {
+        pos = indexOf(list, book5);
+        console.log(pos !== -1 ? "El elemento se encuentra en la posición " + pos : "Elemento no encontrado"); 
+    } catch(error) {
+        console.log(error.name + " " + error.message);  // Aquí se produce una excepción.
+    }
     
     // ! PROBANDO LA FUNCIÓN LASTINDEXOF.
     pos = lastIndexOf(list, book1);
