@@ -135,6 +135,14 @@ function get(list, index) {
  * @returns Un string con todos los titulos de los libros separados por -.
  */
 function toString(list) {
+    // Esta excepción me pareció necesaria.
+    if(isEmpty(list)) {
+        throw {
+            name : "Error de lista",
+            message : "La lista está vacía."
+        }
+    }
+    
     return list.reduce(function(str, book, index){
         return index !== 0 ? str + " - " +  book.title : str + book.title;
     }, "");
