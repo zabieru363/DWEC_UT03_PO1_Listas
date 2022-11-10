@@ -84,6 +84,27 @@ function add(list, elem) {
  * @returns El nuevo tamaño de la lista.
  */
 function addAt(list, elem, index) {
+    if(!elem.ISBN || !elem.title) {
+        throw {
+            name : "Error de tipos:",
+            message : "El elemento no es un libro."
+        };
+    }
+
+    if(isFull(list)) {
+        throw {
+            name : "Error de lista:",
+            message : "La lista está llena."
+        };
+    }
+
+    if(index > MAX_SIZE) {
+        throw {
+            name : "Error de lista:",
+            message : "Indice fuera de limites de la lista.."
+        };
+    }
+
     list.splice(index, 0, elem);
     return size(list);
 }
