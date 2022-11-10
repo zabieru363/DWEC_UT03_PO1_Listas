@@ -253,7 +253,7 @@ function lastElement(list) {
             message : "La lista está vacía."
         };
     }
-    
+
     return list[list.length - 1];
 }
 
@@ -265,6 +265,21 @@ function lastElement(list) {
  * @returns El elemento eliminado.
  */
 function remove(list, index) {
+    if(index > MAX_SIZE) {
+        throw {
+            name : "Error de lista:",
+            message : "Indice fuera de limites de la lista.."
+        };
+    }
+
+    // Esta excepción me pareció necesaria.
+    if(isEmpty(list)) {
+        throw {
+            name : "Error de lista",
+            message : "La lista está vacía."
+        }
+    }
+
     return list.splice(index, 1);   // Splice devuelve un array con los elementos eliminados.
 }
 
@@ -563,6 +578,21 @@ function test() {
 
     // ! PROBANDO LA FUNCIÓN LASTELEMENT.
     console.log(lastElement(list)); // Cojo el último elemento de la lista.
+
+    // * ERRORES QUE ARROJA LASTELEMENT.
+
+    // ? La lista está vacía.
+    clear(list);
+
+    try {
+        console.log(lastElement(list));
+    } catch(error) {
+        console.log(error.name + " " + error.message);
+    }
+
+    console.log("Número de elementos en la lista " + add(list, book1));
+    console.log("Número de elementos en la lista " + add(list, book2));
+    console.log("Número de elementos en la lista " + add(list, book3));
 
     // ! PROBANDO LA FUNCIÓN REMOVE.
     console.log(remove(list, 0));   // Quito el primer elemento de la lista.
