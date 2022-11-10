@@ -191,6 +191,21 @@ function indexOf(list, elem) {
  * @returns La posición del elemento, -1 si no lo encuentra.
  */
 function lastIndexOf(list, elem) {
+    if(!elem.ISBN || !elem.title) {
+        throw {
+            name : "Error de tipos:",
+            message : "El elemento no es un libro."
+        };
+    }
+
+    // Esta excepción me pareció necesaria.
+    if(isEmpty(list)) {
+        throw {
+            name : "Error de lista:",
+            message : "La lista está vacía."
+        };
+    }
+    
     return indexOf([...list].reverse(), elem);
 }
 
@@ -474,7 +489,7 @@ function test() {
     // ! PROBANDO LA FUNCIÓN LASTINDEXOF.
     pos = lastIndexOf(list, book1);
     console.log(pos !== -1 ? "El elemento se encuentra en la posición " + pos : "Elemento no encontrado");  // Encuentra el libro
-    pos = lastIndexOf(list, book4);
+    pos = lastIndexOf(list, book6);
     console.log(pos !== -1 ? "El elemento se encuentra en la posición " + pos : "Elemento no encontrado");  // Aquí no lo encuentra.
 
     // ! PROBANDO LA FUNCIÓN CAPACITY.
