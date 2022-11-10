@@ -117,6 +117,13 @@ function addAt(list, elem, index) {
  * @returns El elemento buscado.
  */
 function get(list, index) {
+    if(index > MAX_SIZE) {
+        throw {
+            name : "Error de lista:",
+            message : "Indice fuera de limites de la lista.."
+        };
+    }
+    
     return list.find(function(book, pos) {
         if(pos === index) return book;
     });
