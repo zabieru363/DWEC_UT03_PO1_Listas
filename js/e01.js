@@ -177,7 +177,7 @@ function removeElement(list, elem) {
     let removed = false;
     const pos = indexOf(list, elem);
 
-    if(pos !== 1) {
+    if(pos !== -1) {
         list.splice(pos, 1);
         removed = true;
     }
