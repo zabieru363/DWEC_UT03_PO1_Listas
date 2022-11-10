@@ -163,6 +163,13 @@ function toString(list) {
  * @returns La posición del elemento, -1 si no lo encuentra.
  */
 function indexOf(list, elem) {
+    if(!elem.ISBN || !elem.title) {
+        throw {
+            name : "Error de tipos:",
+            message : "El elemento no es un libro."
+        };
+    }
+    
     return list.findIndex(function(book) {
         return elem.ISBN === book.ISBN;
     });
@@ -419,6 +426,11 @@ function test() {
     } catch(error) {
         console.log(error.name + " " + error.message);  // Aquí se produce una excepción.
     }
+
+    console.log("Número de elementos en la lista " + addAt(list, book1, 0));
+    console.log("Número de elementos en la lista " + addAt(list, book2, 0));
+    console.log("Número de elementos en la lista " + addAt(list, book3, 0));
+    console.log("Número de elementos en la lista " + addAt(list, book4, 0));
 
     // ! PROBANDO LA FUNCIÓN INDEXOF.
     let pos = indexOf(list, book1);
