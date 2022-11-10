@@ -247,6 +247,13 @@ function firstElement(list) {
  * @returns El último elemento de la lista.
  */
 function lastElement(list) {
+    if(isEmpty(list)) {
+        throw {
+            name : "Error de lista:",
+            message : "La lista está vacía."
+        };
+    }
+    
     return list[list.length - 1];
 }
 
