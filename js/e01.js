@@ -297,7 +297,7 @@ function removeElement(list, elem) {
             message : "El elemento no es un libro."
         };
     }
-    
+
     // Esta excepción me pareció necesaria.
     if(isEmpty(list)) {
         throw {
@@ -640,6 +640,26 @@ function test() {
     } else {
         console.log("No se pudo eliminar el elemento.");
     }
+
+    // * ERRORES QUE ARROJA REMOVE.
+
+    // ? El indice está fuera de los limites de la lista.
+    try {
+        console.log(removeElement(list, book5));
+    } catch(error) {
+        console.log(error.name + " " + error.message);
+    }
+
+    // ? La lista está vacía.
+    clear(list);
+
+    try {
+        console.log(remove(list, 0));
+    } catch(error) {
+        console.log(error.name + " " + error.message);
+    }
+
+    console.log("Número de elementos en la lista " + add(list, book3));
 
     // ! PROBANDO LA FUNCIÓN SET.
     console.log(set(list, book4, 0));   // Reemplaza el único libro que hay en este momento (book3) por book4
