@@ -14,6 +14,21 @@ acceso a la constante MAX_SIZE por lo que no es necesario pasarle nada. */
 
 const MAX_SIZE = 5; // Número máximo de elementos que puede tener la lista.
 
+// * VARIABLES AUXILIARES.
+
+/**
+ * Variable JSON que hace de diccionario de colores para
+ * mostrar con colores los mensajes por pantalla. 
+ */
+const dictionaryColors = {
+    printMessage : "#00C2C8",
+    functionTitle : "#00C800",
+    exception : "#CD0000",
+    errorName : "#02006D"
+};
+
+// * FUNCIONES
+
 /**
  * Crea una lista.
  * @returns Un array vacío
