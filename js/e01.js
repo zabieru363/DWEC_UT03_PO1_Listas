@@ -291,6 +291,21 @@ function remove(list, index) {
  * @returns True si se ha eliminado el libro, false si no es así.
  */
 function removeElement(list, elem) {
+    if(!elem.ISBN || !elem.title) {
+        throw {
+            name : "Error de tipos:",
+            message : "El elemento no es un libro."
+        };
+    }
+    
+    // Esta excepción me pareció necesaria.
+    if(isEmpty(list)) {
+        throw {
+            name : "Error de lista",
+            message : "La lista está vacía."
+        }
+    }
+
     let removed = false;
     const pos = indexOf(list, elem);
 
