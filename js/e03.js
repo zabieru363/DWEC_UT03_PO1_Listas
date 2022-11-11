@@ -1,5 +1,9 @@
 "use strict";
 
+function create() {
+    return [];
+}
+
 /**
  * Función principal de testeo para probar
  * las diferentes funciones de la práctica.
