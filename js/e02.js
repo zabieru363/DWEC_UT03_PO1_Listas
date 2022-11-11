@@ -85,7 +85,14 @@ function add(list, elem) {
         };
     }
 
-    return list.push(elem); // No necesitamos retornar list.length ya que push devuelve el length del array.
+    list.push(elem);
+
+    list.sort(function(a, b) {
+        // Ordenamos la lista.
+        return a.ISBN.localeCompare(b.ISBN);
+    });
+
+    return size(list);
 }
 
 /**
