@@ -14,6 +14,25 @@ acceso a la constante MAX_SIZE por lo que no es necesario pasarle nada. */
 
 const MAX_SIZE = 5; // Número máximo de elementos que puede tener la lista.
 
+// * VARIABLES AUXILIARES.
+
+/**
+ * Variable JSON que hace de diccionario de colores para
+ * mostrar con colores los mensajes por pantalla. 
+ */
+const dictionaryColors = {
+    printMessage : "#00C2C8",
+    functionTitle : "#00C800",
+    exception : "#CD0000",
+    errorName : "#0500FF",
+
+    setColor : function(color) {
+        return "color: " + dictionaryColors[color];
+    }
+};
+
+// * FUNCIONES
+
 /**
  * Crea una lista.
  * @returns Un array vacío
@@ -403,311 +422,370 @@ function test() {
     const list = create();  // Aquí creo la lista.
 
     // ! PROBANDO FUNCIÓN ISEMPTY.
-    console.log(isEmpty(list) ? "La lista está vacía" : "");    // La lista está vacía.
+    console.log("%cFUNCIÓN ISEMPTY", dictionaryColors.setColor("functionTitle"));
+    console.log(isEmpty(list) ? "%cLa lista está vacía" : "%c", dictionaryColors.setColor("printMessage"));    // La lista está vacía.
 
     // ! PROBANDO FUNCIÓN ISFULL.
-    console.log(isFull(list) ? "La lista está llena" : ""); // Empty string.
+    console.log("%cFUNCIÓN ISFULL", dictionaryColors.setColor("functionTitle"));
+    console.log(isFull(list) ? "%cLa lista está llena" : "%c", dictionaryColors.setColor("printMessage")); // Empty string.
 
     // ! PROBANDO FUNCIÓN SIZE.
-    console.log("Número de elementos en la lista " + size(list));   // 0 porque no hemos añadido ninguno.
+    console.log("%cFUNCIÓN SIZE", dictionaryColors.setColor("functionTitle"));
+    console.log("%cNúmero de elementos en la lista " + size(list), dictionaryColors.setColor("printMessage"));   // 0 porque no hemos añadido ninguno.
 
     // ! PROBANDO LA FUNCIÓN ADD.
-    console.log("Número de elementos en la lista " + add(list, book1)); // Añado el libro 1.
+    console.log("%cFUNCIÓN ADD", dictionaryColors.setColor("functionTitle"));
+    console.log("%cNúmero de elementos en la lista " + add(list, book1), dictionaryColors.setColor("printMessage")); // Añado el libro 1.
 
     // * ERRORES QUE ARROJA ADD.
 
+    console.log("%cERRORES ADD", dictionaryColors.setColor("functionTitle"));
+
     // ? El elemento no es un libro.
+    console.log("%c- El elemento no es un libro", dictionaryColors.setColor("errorName"));
     try {
         console.log("Número de elementos en la lista " + add(list, book5));
     } catch(error) {
-        console.log(error.name + " " + error.message);  // Aquí se produce una excepción.
+        console.log("%c" + error.name + " " + error.message, dictionaryColors.setColor("exception"));  // Aquí se produce una excepción.
     }
 
     // ? La lista está llena.
-    console.log("Número de elementos en la lista " + add(list, book2));
-    console.log("Número de elementos en la lista " + add(list, book3));
-    console.log("Número de elementos en la lista " + add(list, book4));
-    console.log("Número de elementos en la lista " + add(list, book1));
+    console.log("%c- La lista está llena", dictionaryColors.setColor("errorName"));
+    console.log("%cNúmero de elementos en la lista " + add(list, book2), dictionaryColors.setColor("printMessage"));
+    console.log("%cNúmero de elementos en la lista " + add(list, book2), dictionaryColors.setColor("printMessage"));
+    console.log("%cNúmero de elementos en la lista " + add(list, book2), dictionaryColors.setColor("printMessage"));
+    console.log("%cNúmero de elementos en la lista " + add(list, book2), dictionaryColors.setColor("printMessage"));
 
     try {
         console.log("Número de elementos en la lista " + add(list, book1));
     } catch(error) {
-        console.log(error.name + " " + error.message);  // Aquí se produce una excepción.
+        console.log("%c" + error.name + " " + error.message, dictionaryColors.setColor("exception"));  // Aquí se produce una excepción.
     }
 
     clear(list);    // Vaciamos la lista para probar las demás funciones.
 
     // ! PROBANDO LA FUNCIÓN ADDAT.
-    console.log("Número de elementos en la lista " + addAt(list, book3, 0));    // Añado el libro 3 en la posición 0.
+    console.log("%cFUNCIÓN ADDAT", dictionaryColors.setColor("functionTitle"));
+    console.log("%cNúmero de elementos en la lista " + addAt(list, book3, 0), dictionaryColors.setColor("printMessage"));    // Añado el libro 3 en la posición 0.
 
     // * ERRORES QUE ARROJA ADDAT.
 
+    console.log("%cERRORES ADDAT", dictionaryColors.setColor("functionTitle"));
+
     // ? El elemento no es un libro.
+    console.log("%c- El elemento no es un libro", dictionaryColors.setColor("errorName"));
     try {
         console.log("Número de elementos en la lista " + addAt(list, book5, 1));
     } catch(error) {
-        console.log(error.name + " " + error.message);  // Aquí se produce una excepción.
+        console.log("%c" + error.name + " " + error.message, dictionaryColors.setColor("exception"));  // Aquí se produce una excepción.
     }
 
     // ? La lista está llena.
-    console.log("Número de elementos en la lista " + addAt(list, book1, 0));
-    console.log("Número de elementos en la lista " + addAt(list, book1, 0));
-    console.log("Número de elementos en la lista " + addAt(list, book1, 0));
-    console.log("Número de elementos en la lista " + addAt(list, book1, 0));
+    console.log("%c- La lista está llena", dictionaryColors.setColor("errorName"));
+    console.log("%cNúmero de elementos en la lista " + addAt(list, book1, 0), dictionaryColors.setColor("printMessage"));
+    console.log("%cNúmero de elementos en la lista " + addAt(list, book1, 0), dictionaryColors.setColor("printMessage"));
+    console.log("%cNúmero de elementos en la lista " + addAt(list, book1, 0), dictionaryColors.setColor("printMessage"));
+    console.log("%cNúmero de elementos en la lista " + addAt(list, book1, 0), dictionaryColors.setColor("printMessage"));
 
     try {
         console.log("Número de elementos en la lista " + addAt(list, book2, 1));
     } catch(error) {
-        console.log(error.name + " " + error.message);  // Aquí se produce una excepción.
+        console.log("%c" + error.name + " " + error.message, dictionaryColors.setColor("exception"));  // Aquí se produce una excepción.
     }
 
     clear(list);    // Vaciamos la lista para probar las demás funciones.
 
     // ? El indice está fuera de los limites de la lista.
+    console.log("%c- El indice está fuera de los limites de la lista.", dictionaryColors.setColor("errorName"));
     try {
         console.log("Número de elementos en la lista " + addAt(list, book2, 22));
     } catch(error) {
-        console.log(error.name + " " + error.message);  // Aquí se produce una excepción.
+        console.log("%c" + error.name + " " + error.message, dictionaryColors.setColor("exception"));  // Aquí se produce una excepción.
     }
 
-    console.log("Número de elementos en la lista " + addAt(list, book1, 0));
-    console.log("Número de elementos en la lista " + addAt(list, book2, 0));
-    console.log("Número de elementos en la lista " + addAt(list, book3, 0));
-    console.log("Número de elementos en la lista " + addAt(list, book4, 0));
+    console.log("%cNúmero de elementos en la lista " + addAt(list, book1, 0), dictionaryColors.setColor("printMessage"));
+    console.log("%cNúmero de elementos en la lista " + addAt(list, book2, 0), dictionaryColors.setColor("printMessage"));
+    console.log("%cNúmero de elementos en la lista " + addAt(list, book3, 0), dictionaryColors.setColor("printMessage"));
+    console.log("%cNúmero de elementos en la lista " + addAt(list, book4, 0), dictionaryColors.setColor("printMessage"));
 
     // ! PROBANDO LA FUNCIÓN GET.
+    console.log("%cFUNCIÓN GET", dictionaryColors.setColor("functionTitle"));
     console.log(get(list, 0));  // Cojo el elemento que está en la posición 0.
 
     // * ERRORES QUE ARROJA GET.
 
+    console.log("%cERRORES GET", dictionaryColors.setColor("functionTitle"));
+
     // ? El indice está fuera de los limites de la lista.
+    console.log("%c- El indice está fuera de los limites de la lista.", dictionaryColors.setColor("errorName"));
     try {
         console.log(get(list, 22));
     } catch(error) {
-        console.log(error.name + " " + error.message);  // Aquí se produce una excepción.
+        console.log("%c" + error.name + " " + error.message, dictionaryColors.setColor("exception"));  // Aquí se produce una excepción.
     }
 
     // ? La lista está vacía.
+    console.log("%c- La lista está vacía.", dictionaryColors.setColor("errorName"));
     clear(list);
 
     try {
         console.log(get(list, 2));
     } catch(error) {
-        console.log(error.name + " " + error.message);  // Aquí se produce una excepción.
+        console.log("%c" + error.name + " " + error.message, dictionaryColors.setColor("exception"));  // Aquí se produce una excepción.
     }
 
-    console.log("Número de elementos en la lista " + addAt(list, book1, 0));
-    console.log("Número de elementos en la lista " + addAt(list, book2, 0));
-    console.log("Número de elementos en la lista " + addAt(list, book3, 0));
-    console.log("Número de elementos en la lista " + addAt(list, book4, 0));
+    console.log("%cNúmero de elementos en la lista " + addAt(list, book1, 0), dictionaryColors.setColor("printMessage"));    
+    console.log("%cNúmero de elementos en la lista " + addAt(list, book2, 0), dictionaryColors.setColor("printMessage"));    
+    console.log("%cNúmero de elementos en la lista " + addAt(list, book3, 0), dictionaryColors.setColor("printMessage"));    
+    console.log("%cNúmero de elementos en la lista " + addAt(list, book4, 0), dictionaryColors.setColor("printMessage"));    
 
     // ! PROBANDO LA FUNCIÓN TOSTRING.
-    console.log(toString(list));    // Imprime todos los titulos de los libros.
+    console.log("%cFUNCIÓN TOSTRING", dictionaryColors.setColor("functionTitle"));
+    console.log("%c" + toString(list), dictionaryColors.setColor("printMessage"));    // Imprime todos los titulos de los libros.
 
     // * ERRORES QUE ARROJA TOSTRING.
 
+    console.log("%cERRORES TOSTRING", dictionaryColors.setColor("functionTitle"));
+
     // ? La lista está vacía.
+    console.log("%c- La lista está vacía.", dictionaryColors.setColor("errorName"));
     clear(list);
 
     try {
         console.log(toString(list));
     } catch(error) {
-        console.log(error.name + " " + error.message);  // Aquí se produce una excepción.
+        console.log("%c" + error.name + " " + error.message, dictionaryColors.setColor("exception"));  // Aquí se produce una excepción.
     }
 
-    console.log("Número de elementos en la lista " + addAt(list, book1, 0));
-    console.log("Número de elementos en la lista " + addAt(list, book2, 0));
-    console.log("Número de elementos en la lista " + addAt(list, book3, 0));
-    console.log("Número de elementos en la lista " + addAt(list, book4, 0));
+    console.log("%cNúmero de elementos en la lista " + addAt(list, book1, 0), dictionaryColors.setColor("printMessage"));   
+    console.log("%cNúmero de elementos en la lista " + addAt(list, book2, 0), dictionaryColors.setColor("printMessage"));   
+    console.log("%cNúmero de elementos en la lista " + addAt(list, book3, 0), dictionaryColors.setColor("printMessage"));   
+    console.log("%cNúmero de elementos en la lista " + addAt(list, book4, 0), dictionaryColors.setColor("printMessage"));   
 
     // ! PROBANDO LA FUNCIÓN INDEXOF.
+    console.log("%cFUNCIÓN INDEXOF", dictionaryColors.setColor("functionTitle"));
     let pos = indexOf(list, book1);
-    console.log(pos !== -1 ? "El elemento se encuentra en la posición " + pos : "Elemento no encontrado");  // Encuentra el libro
+    console.log(pos !== -1 ? "%cEl elemento se encuentra en la posición " + pos : "%cElemento no encontrado", dictionaryColors.setColor("printMessage"));  // Encuentra el libro
     pos = indexOf(list, book6);
-    console.log(pos !== -1 ? "El elemento se encuentra en la posición " + pos : "Elemento no encontrado");  // Aquí no lo encuentra.
+    console.log(pos !== -1 ? "%cEl elemento se encuentra en la posición " + pos : "%cElemento no encontrado", dictionaryColors.setColor("printMessage"));   // Aquí no lo encuentra.
 
     // * ERRORES QUE ARROJA INDEXOF.
 
+    console.log("%cERRORES INDEXOF", dictionaryColors.setColor("functionTitle"));
+
     // ? El elemento no es un libro.
+    console.log("%c- El elemento no es un libro.", dictionaryColors.setColor("errorName"));
     try {
         pos = indexOf(list, book5);
         console.log(pos !== -1 ? "El elemento se encuentra en la posición " + pos : "Elemento no encontrado"); 
     } catch(error) {
-        console.log(error.name + " " + error.message);  // Aquí se produce una excepción.
+        console.log("%c" + error.name + " " + error.message, dictionaryColors.setColor("exception"));  // Aquí se produce una excepción.
     }
 
     // ? La lista está vacía.
+    console.log("%c- La lista está vacía.", dictionaryColors.setColor("errorName"));
     clear(list);
 
     try {
         pos = indexOf(list, book2);
         console.log(pos !== -1 ? "El elemento se encuentra en la posición " + pos : "Elemento no encontrado"); 
     } catch(error) {
-        console.log(error.name + " " + error.message);  // Aquí se produce una excepción.
+        console.log("%c" + error.name + " " + error.message, dictionaryColors.setColor("exception"));  // Aquí se produce una excepción.
     }
 
-    console.log("Número de elementos en la lista " + addAt(list, book1, 0));
-    console.log("Número de elementos en la lista " + addAt(list, book2, 0));
-    console.log("Número de elementos en la lista " + addAt(list, book3, 0));
-    console.log("Número de elementos en la lista " + addAt(list, book4, 0));
+    console.log("%cNúmero de elementos en la lista " + addAt(list, book1, 0), dictionaryColors.setColor("printMessage")); 
+    console.log("%cNúmero de elementos en la lista " + addAt(list, book2, 0), dictionaryColors.setColor("printMessage")); 
+    console.log("%cNúmero de elementos en la lista " + addAt(list, book3, 0), dictionaryColors.setColor("printMessage")); 
+    console.log("%cNúmero de elementos en la lista " + addAt(list, book4, 0), dictionaryColors.setColor("printMessage")); 
     
     // ! PROBANDO LA FUNCIÓN LASTINDEXOF.
+    console.log("%cFUNCIÓN LASTINDEXOF", dictionaryColors.setColor("functionTitle"));
     pos = lastIndexOf(list, book1);
-    console.log(pos !== -1 ? "El elemento se encuentra en la posición " + pos : "Elemento no encontrado");  // Encuentra el libro
+    console.log(pos !== -1 ? "%cEl elemento se encuentra en la posición " + pos : "%cElemento no encontrado", dictionaryColors.setColor("printMessage"));   // Encuentra el libro
     pos = lastIndexOf(list, book6);
-    console.log(pos !== -1 ? "El elemento se encuentra en la posición " + pos : "Elemento no encontrado");  // Aquí no lo encuentra.
+    console.log(pos !== -1 ? "%cEl elemento se encuentra en la posición " + pos : "%cElemento no encontrado", dictionaryColors.setColor("printMessage"));   // Aquí no lo encuentra.
 
     // * ERRORES QUE ARROJA LASTINDEXOF.
 
+    console.log("%cERRORES LASTINDEXOF", dictionaryColors.setColor("functionTitle"));
+
     // ? El elemento no es un libro.
+    console.log("%c- El elemento no es un libro.", dictionaryColors.setColor("errorName"));
     try {
         pos = lastIndexOf(list, book5);
         console.log(pos !== -1 ? "El elemento se encuentra en la posición " + pos : "Elemento no encontrado"); 
     } catch(error) {
-        console.log(error.name + " " + error.message);  // Aquí se produce una excepción.
+        console.log("%c" + error.name + " " + error.message, dictionaryColors.setColor("exception"));  // Aquí se produce una excepción.
     }
 
     // ? La lista está vacía.
+    console.log("%c- La lista está vacía.", dictionaryColors.setColor("errorName"));
     clear(list);
 
     try {
         pos = indexOf(list, book2);
         console.log(pos !== -1 ? "El elemento se encuentra en la posición " + pos : "Elemento no encontrado"); 
     } catch(error) {
-        console.log(error.name + " " + error.message);  // Aquí se produce una excepción.
+        console.log("%c" + error.name + " " + error.message, dictionaryColors.setColor("exception"));  // Aquí se produce una excepción.
     }
 
-    console.log("Número de elementos en la lista " + addAt(list, book1, 0));
-    console.log("Número de elementos en la lista " + addAt(list, book2, 0));
-    console.log("Número de elementos en la lista " + addAt(list, book3, 0));
-    console.log("Número de elementos en la lista " + addAt(list, book4, 0));
+    console.log("%cNúmero de elementos en la lista " + addAt(list, book1, 0), dictionaryColors.setColor("printMessage")); 
+    console.log("%cNúmero de elementos en la lista " + addAt(list, book2, 0), dictionaryColors.setColor("printMessage")); 
+    console.log("%cNúmero de elementos en la lista " + addAt(list, book3, 0), dictionaryColors.setColor("printMessage")); 
+    console.log("%cNúmero de elementos en la lista " + addAt(list, book4, 0), dictionaryColors.setColor("printMessage")); 
 
     // ! PROBANDO LA FUNCIÓN CAPACITY.
-    console.log("Número máximo de elementos que se pueden almacenar en la lista " + capacity());    // 5
+    console.log("%cFUNCIÓN CAPACITY", dictionaryColors.setColor("functionTitle"));
+    console.log("%cNúmero máximo de elementos que se pueden almacenar en la lista " + capacity(), dictionaryColors.setColor("printMessage"));    // 5
 
     // ! PROBANDO LA FUNCIÓN CLEAR.
+    console.log("%cFUNCIÓN CLEAR", dictionaryColors.setColor("functionTitle"));
     clear(list);    // Aquí vacío la lista.
-    console.log("Número de elementos de la lista " + size(list));
+    console.log("%cNúmero de elementos de la lista " + size(list), dictionaryColors.setColor("printMessage"));
 
     // * Añadimos nuevos libros a la lista para probar las siguientes funciones.
-    console.log("Número de elementos en la lista " + add(list, book1));
-    console.log("Número de elementos en la lista " + add(list, book2));
-    console.log("Número de elementos en la lista " + add(list, book3));
+    console.log("%cNúmero de elementos en la lista " + add(list, book1), dictionaryColors.setColor("printMessage"));
+    console.log("%cNúmero de elementos en la lista " + add(list, book2), dictionaryColors.setColor("printMessage"));
+    console.log("%cNúmero de elementos en la lista " + add(list, book3), dictionaryColors.setColor("printMessage"));
 
     // ! PROBANDO LA FUNCIÓN FIRSTELEMENT.
+    console.log("%cFUNCIÓN FIRSTELEMENT", dictionaryColors.setColor("functionTitle"));
     console.log(firstElement(list));    // Cojo el primer elemento de la lista.
+
+    console.log("%cERRORES FIRSTELEMENT", dictionaryColors.setColor("functionTitle"));
 
     // * ERRORES QUE ARROJA FIRSTELEMENT.
 
     // ? La lista está vacía.
+    console.log("%c- La lista está vacía.", dictionaryColors.setColor("errorName"));
     clear(list);
 
     try {
         console.log(firstElement(list));
     } catch(error) {
-        console.log(error.name + " " + error.message);
+        console.log("%c" + error.name + " " + error.message, dictionaryColors.setColor("exception"));  // Aquí se produce una excepción.
     }
 
-    console.log("Número de elementos en la lista " + add(list, book1));
-    console.log("Número de elementos en la lista " + add(list, book2));
-    console.log("Número de elementos en la lista " + add(list, book3));
+    console.log("%cNúmero de elementos en la lista " + add(list, book1), dictionaryColors.setColor("printMessage"));
+    console.log("%cNúmero de elementos en la lista " + add(list, book2), dictionaryColors.setColor("printMessage"));
+    console.log("%cNúmero de elementos en la lista " + add(list, book3), dictionaryColors.setColor("printMessage"));
 
     // ! PROBANDO LA FUNCIÓN LASTELEMENT.
+    console.log("%cFUNCIÓN LASTELEMENT", dictionaryColors.setColor("functionTitle"));
     console.log(lastElement(list)); // Cojo el último elemento de la lista.
+
+    console.log("%cERRORES FIRSTELEMENT", dictionaryColors.setColor("functionTitle"));
 
     // * ERRORES QUE ARROJA LASTELEMENT.
 
     // ? La lista está vacía.
+    console.log("%c- La lista está vacía.", dictionaryColors.setColor("errorName"));
     clear(list);
 
     try {
         console.log(lastElement(list));
     } catch(error) {
-        console.log(error.name + " " + error.message);
+        console.log("%c" + error.name + " " + error.message, dictionaryColors.setColor("exception"));  // Aquí se produce una excepción.
     }
 
-    console.log("Número de elementos en la lista " + add(list, book1));
-    console.log("Número de elementos en la lista " + add(list, book2));
-    console.log("Número de elementos en la lista " + add(list, book3));
+    console.log("%cNúmero de elementos en la lista " + add(list, book1), dictionaryColors.setColor("printMessage"));
+    console.log("%cNúmero de elementos en la lista " + add(list, book2), dictionaryColors.setColor("printMessage"));
+    console.log("%cNúmero de elementos en la lista " + add(list, book3), dictionaryColors.setColor("printMessage"));
 
     // ! PROBANDO LA FUNCIÓN REMOVE.
+    console.log("%cFUNCIÓN REMOVE", dictionaryColors.setColor("functionTitle"));
     console.log(remove(list, 0));   // Quito el primer elemento de la lista.
+
+    console.log("%cERRORES REMOVE", dictionaryColors.setColor("functionTitle"));
 
     // * ERRORES QUE ARROJA REMOVE.
 
     // ? El indice está fuera de los limites de la lista.
+    console.log("%c- El indice está fuera de los limites de la lista.", dictionaryColors.setColor("errorName"));
     try {
         console.log(remove(list, 22));
     } catch(error) {
-        console.log(error.name + " " + error.message);
+        console.log("%c" + error.name + " " + error.message, dictionaryColors.setColor("exception"));  // Aquí se produce una excepción.
     }
 
     // ? La lista está vacía.
+    console.log("%c- La lista está vacía.", dictionaryColors.setColor("errorName"));
     clear(list);
 
     try {
         console.log(remove(list, 0));
     } catch(error) {
-        console.log(error.name + " " + error.message);
+        console.log("%c" + error.name + " " + error.message, dictionaryColors.setColor("exception"));  // Aquí se produce una excepción.
     }
 
-    console.log("Número de elementos en la lista " + add(list, book1));
-    console.log("Número de elementos en la lista " + add(list, book2));
-    console.log("Número de elementos en la lista " + add(list, book3));
+    console.log("%cNúmero de elementos en la lista " + add(list, book1), dictionaryColors.setColor("printMessage"));
+    console.log("%cNúmero de elementos en la lista " + add(list, book2), dictionaryColors.setColor("printMessage"));
+    console.log("%cNúmero de elementos en la lista " + add(list, book3), dictionaryColors.setColor("printMessage"));
 
     // ! PROBANDO LA FUNCIÓN REMOVEELEMENT.
+    console.log("%cFUNCIÓN REMOVEELEMENT", dictionaryColors.setColor("functionTitle"));
     if(removeElement(list, book2)) {
-        console.log("El elemento se ha eliminado correctamente");   // Se ejecuta esto.
+        console.log("%cEl elemento se ha eliminado correctamente.", dictionaryColors.setColor("printMessage"));   // Se ejecuta esto.
     } else {
-        console.log("No se pudo eliminar el elemento.");
+        console.log("%cNo se pudo insertar el elemento.", dictionaryColors.setColor("printMessage"));
     }
 
-    // * ERRORES QUE ARROJA REMOVE.
+    console.log("%cERRORES REMOVEELEMENT", dictionaryColors.setColor("functionTitle"));
+
+    // * ERRORES QUE ARROJA REMOVEELEMENT.
 
     // ? El elemento no es un libro.
+    console.log("%c- El elemento no es un libro.", dictionaryColors.setColor("errorName"));
     try {
         console.log(removeElement(list, book5));
     } catch(error) {
-        console.log(error.name + " " + error.message);
+        console.log("%c" + error.name + " " + error.message, dictionaryColors.setColor("exception"));  // Aquí se produce una excepción.
     }
 
     // ? La lista está vacía.
+    console.log("%c- La lista está vacía.", dictionaryColors.setColor("errorName"));
     clear(list);
 
     try {
         console.log(remove(list, 0));
     } catch(error) {
-        console.log(error.name + " " + error.message);
+        console.log("%c" + error.name + " " + error.message, dictionaryColors.setColor("exception"));  // Aquí se produce una excepción.
     }
 
-    console.log("Número de elementos en la lista " + add(list, book3));
+    console.log("%cNúmero de elementos en la lista " + add(list, book3), dictionaryColors.setColor("printMessage"));
 
     // ! PROBANDO LA FUNCIÓN SET.
+    console.log("%cFUNCIÓN SET", dictionaryColors.setColor("functionTitle"));
     console.log(set(list, book4, 0));   // Reemplaza el único libro que hay en este momento (book3) por book4.
+
+    console.log("%cERRORES SET", dictionaryColors.setColor("functionTitle"));
 
     // * ERRORES QUE ARROJA SET
     
     // ? El elemento no es un libro.
+    console.log("%c- El elemento no es un libro.", dictionaryColors.setColor("errorName"));
     try {
         console.log(set(list, book5, 0));
     } catch(error) {
-        console.log(error.name + " " + error.message);
+        console.log("%c" + error.name + " " + error.message, dictionaryColors.setColor("exception"));  // Aquí se produce una excepción.
     }
 
     // ? El indice está fuera de los limites de la lista.
+    console.log("%c- El indice está fuera de los limites de la lista.", dictionaryColors.setColor("errorName"));
     try {
         console.log(set(list, book2, 22));
     } catch(error) {
-        console.log(error.name + " " + error.message);
+        console.log("%c" + error.name + " " + error.message, dictionaryColors.setColor("exception"));  // Aquí se produce una excepción.
     }
 
     // ? La lista está vacía.
+    console.log("%c- La lista está vacía.", dictionaryColors.setColor("errorName"));
     clear(list);
 
     try {
         console.log(set(list, book2, 0));
     } catch(error) {
-        console.log(error.name + " " + error.message);
+        console.log("%c" + error.name + " " + error.message, dictionaryColors.setColor("exception"));  // Aquí se produce una excepción.
     }
 }
 
