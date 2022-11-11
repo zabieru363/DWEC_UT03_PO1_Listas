@@ -28,6 +28,12 @@ function has(set, elem) {
     });
 }
 
+function toString(set) {
+    return set.reduce(function(str, book, index){
+        return index !== 0 ? str + " - " +  book.title : str + book.title;
+    }, "");
+}
+
 /**
  * Función principal de testeo para probar
  * las diferentes funciones de la práctica.
