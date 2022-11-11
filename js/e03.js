@@ -22,6 +22,12 @@ function add(set, elem) {
     return size(set);
 }
 
+function has(set, elem) {
+    return set.some(function(element) {
+        return elem.ISBN === element.ISBN;
+    });
+}
+
 /**
  * Función principal de testeo para probar
  * las diferentes funciones de la práctica.
