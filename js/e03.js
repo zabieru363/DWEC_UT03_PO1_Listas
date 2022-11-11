@@ -94,6 +94,12 @@ function has(set, elem) {
     // * Y ahora uno que no está.
     console.log("Total de elementos " + add(set, book2));
 
+    // ! PROBANDO FUNCIÓN HAS.
+    console.log(has(set, book1) ? "Encontrado" : "No encontrado");
+    
+    // * Y ahora uno que no está.
+    console.log(has(set, book3) ? "Encontrado" : "No encontrado");
+
 }
 
 test();
