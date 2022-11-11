@@ -52,6 +52,8 @@ function create() {
         publicationDate: new Date(2021, 11, 3),
         price: 18,
     };
+
+    const set = create();
 }
 
 test();
