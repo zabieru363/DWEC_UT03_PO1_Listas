@@ -12,6 +12,16 @@ function size(set) {
     return set.length;
 }
 
+function add(set, elem) {
+    const found = set.some(function(element) {
+        return elem.ISBN === element.ISBN;
+    });
+
+    if(!found) set.push(elem);
+
+    return size(set);
+}
+
 /**
  * Función principal de testeo para probar
  * las diferentes funciones de la práctica.
@@ -66,6 +76,9 @@ function size(set) {
 
     // ! PROBANDO FUNCIÓN ISEMPTY.
     console.log(isEmpty(set) ? "El conjunto está vacío" : "");
+
+    // ! PROBANDO FUNCIÓN SIZE.
+    console.log("Tamaño del conjunto " + size(set));
 }
 
 test();
