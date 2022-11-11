@@ -38,6 +38,21 @@ function clear(set) {
     set.length = 0;
 }
 
+function remove(set, elem) {
+    let removed = false;
+
+    const pos = set.findIndex(function(element) {
+        return elem.ISBN === element.ISBN;
+    });
+
+    if(pos !== -1) {
+        set.splice(pos, 1);
+        removed = true;
+    }
+
+    return removed;
+}
+
 /**
  * Función principal de testeo para probar
  * las diferentes funciones de la práctica.
