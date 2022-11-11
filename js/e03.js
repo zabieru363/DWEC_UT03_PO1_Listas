@@ -131,6 +131,15 @@ function remove(set, elem) {
     // ! PROBANDO FUNCIÓN CLEAR.
     clear(set);
     console.log("Tamaño del conjunto " + size(set));
+
+    console.log("Total de elementos " + add(set, book1));
+    console.log("Total de elementos " + add(set, book2));
+
+    // ! PROBANDO FUNCIÓN REMOVE.
+    console.log(remove(set, book1) ? "Eliminado" : "No se pudo eliminar el libro.");
+
+    // * Intentamos eliminar un libro que no está en el conjunto.
+    console.log(remove(set, book3) ? "Eliminado" : "No se pudo eliminar el libro.");
 }
 
 test();
