@@ -106,6 +106,8 @@ function toString(set) {
     // * Y ahora uno que no está.
     console.log(has(set, book3) ? "Encontrado" : "No encontrado");
 
+    // ! PROBANDO FUNCIÓN TOSTRING.
+    console.log(toString(set));
 }
 
 test();
