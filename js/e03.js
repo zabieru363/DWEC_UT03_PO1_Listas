@@ -57,7 +57,10 @@ function isEmpty(set) {
         price: 18,
     };
 
+    // ! PROBANDO FUNCIÓN CREATE.
     const set = create();
+
+    console.log(isEmpty(set) ? "El conjunto está vacío" : "");
 }
 
 test();
