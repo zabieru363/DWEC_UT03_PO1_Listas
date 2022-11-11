@@ -34,6 +34,10 @@ function toString(set) {
     }, "");
 }
 
+function clear(set) {
+    set.length = 0;
+}
+
 /**
  * Función principal de testeo para probar
  * las diferentes funciones de la práctica.
