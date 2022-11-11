@@ -8,6 +8,10 @@ function isEmpty(set) {
     return set.length === 0;
 }
 
+function size(set) {
+    return set.length;
+}
+
 /**
  * Función principal de testeo para probar
  * las diferentes funciones de la práctica.
@@ -60,6 +64,7 @@ function isEmpty(set) {
     // ! PROBANDO FUNCIÓN CREATE.
     const set = create();
 
+    // ! PROBANDO FUNCIÓN ISEMPTY.
     console.log(isEmpty(set) ? "El conjunto está vacío" : "");
 }
 
