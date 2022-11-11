@@ -95,23 +95,27 @@ function clear(set) {
 
     // ! PROBANDO FUNCIÓN SIZE.
     console.log("Tamaño del conjunto " + size(set));
-
+    
     // ! PROBANDO FUNCIÓN ADD.
     console.log("Total de elementos " + add(set, book1));
-
+    
     // * Intentando añadir un elemento que ya está en el conjunto.
     console.log("Total de elementos " + add(set, book1));
     // * Y ahora uno que no está.
     console.log("Total de elementos " + add(set, book2));
-
+    
     // ! PROBANDO FUNCIÓN HAS.
     console.log(has(set, book1) ? "Encontrado" : "No encontrado");
     
     // * Y ahora uno que no está.
     console.log(has(set, book3) ? "Encontrado" : "No encontrado");
-
+    
     // ! PROBANDO FUNCIÓN TOSTRING.
     console.log(toString(set));
+    
+    // ! PROBANDO FUNCIÓN CLEAR.
+    clear(set);
+    console.log("Tamaño del conjunto " + size(set));
 }
 
 test();
