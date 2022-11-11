@@ -3,9 +3,8 @@
 comentarios destacados por si hay algún caracter extraño en los
 comentarios de mi código. */
 
-/* - Se me ocurrío hacer un diccionario de colores para utilizar
-colores con console.log para organizar mejor las pruebas de cada
-función. */
+/* Se me ocurrió hacer un diccionario de colores para utilizarlo
+en la función de testeo y poder usar colores por consola. */
 
 /* - En la función add también es posible hacer un return de
 size(list) o de list.length pero prefiero retornar list.push(elem)
