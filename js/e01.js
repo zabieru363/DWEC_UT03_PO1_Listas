@@ -174,7 +174,18 @@ function toString(list) {
     }
 
     return list.reduce(function(str, book, index){
-        return index !== 0 ? str + " - " +  book.title : str + book.title;
+        return index !== 0 ? 
+        str + "ISBN: " +  book.ISBN + " - " 
+        + "TITLE: " +   book.title + " - "
+        + "AUTHOR: " + book.author + " - "
+        + "DATE: " + book.publicationDate + " - "
+        + "PRICE: " + book.price + "\n"
+
+        : str + "ISBN: " +  book.ISBN + " " 
+        + "TITLE: " +   book.title + " "
+        + "AUTHOR: " + book.author + " "
+        + "DATE: " + book.publicationDate + " "
+        + "PRICE: " + book.price;
     }, "");
 }
 
@@ -697,7 +708,7 @@ function test() {
 
     // ! PROBANDO LA FUNCIÓN REMOVE.
     console.log("%cFUNCIÓN REMOVE", dictionaryColors.setColor("functionTitle"));
-    console.log(remove(list, 0));   // Quito el primer elemento de la lista.
+    console.log(...remove(list, 0));   // Quito el primer elemento de la lista.
 
     console.log("%cERRORES REMOVE", dictionaryColors.setColor("functionTitle"));
 
@@ -706,7 +717,7 @@ function test() {
     // ? El indice está fuera de los limites de la lista.
     console.log("%c- El indice está fuera de los limites de la lista.", dictionaryColors.setColor("errorName"));
     try {
-        console.log(remove(list, 22));
+        console.log(...remove(list, 22));
     } catch(error) {
         console.log("%c" + error.name + " " + error.message, dictionaryColors.setColor("exception"));  // Aquí se produce una excepción.
     }
@@ -716,7 +727,7 @@ function test() {
     clear(list);
 
     try {
-        console.log(remove(list, 0));
+        console.log(...remove(list, 0));
     } catch(error) {
         console.log("%c" + error.name + " " + error.message, dictionaryColors.setColor("exception"));  // Aquí se produce una excepción.
     }
