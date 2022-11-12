@@ -197,6 +197,14 @@ function remove(set, elem) {
         console.log(error.name + " " + error.message);
     }
 
+    // ? El libro no tiene un ISBN válido.
+    console.log("%c- El libro no tiene un ISBN válido.", dictionaryColors.setColor("errorName"));
+    try {
+        console.log("%cNúmero de elementos en la lista " + add(set, book6), dictionaryColors.setColor("printMessage"));
+    } catch(error) {
+        console.log("%c" + error.name + " " + error.message, dictionaryColors.setColor("exception"));   // Aquí se produce una excepción.
+    }
+
     // ? El elemento ya está en el conjunto.
     try {
         console.log("Total de elementos " + add(set, book1));
@@ -217,6 +225,14 @@ function remove(set, elem) {
         console.log("Total de elementos " + has(set, book5));
     } catch (error) {
         console.log(error.name + " " + error.message);
+    }
+
+    // ? El libro no tiene un ISBN válido.
+    console.log("%c- El libro no tiene un ISBN válido.", dictionaryColors.setColor("errorName"));
+    try {
+        console.log("%cNúmero de elementos en la lista " + has(set, book6), dictionaryColors.setColor("printMessage"));
+    } catch(error) {
+        console.log("%c" + error.name + " " + error.message, dictionaryColors.setColor("exception"));   // Aquí se produce una excepción.
     }
     
     // ! PROBANDO FUNCIÓN TOSTRING.
@@ -256,6 +272,14 @@ function remove(set, elem) {
         console.log(remove(set, book5) ? "Eliminado" : "No se pudo eliminar el libro.");
     } catch(error) {
         console.log(error.name + " " + error.message);
+    }
+
+    // ? El libro no tiene un ISBN válido.
+    console.log("%c- El libro no tiene un ISBN válido.", dictionaryColors.setColor("errorName"));
+    try {
+        console.log("%cNúmero de elementos en la lista " + remove(list, book6), dictionaryColors.setColor("printMessage"));
+    } catch(error) {
+        console.log("%c" + error.name + " " + error.message, dictionaryColors.setColor("exception"));   // Aquí se produce una excepción.
     }
 }
 
