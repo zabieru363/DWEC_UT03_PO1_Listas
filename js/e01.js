@@ -89,9 +89,9 @@ function add(list, elem) {
 
     const regex = /[0-9]{3}-[0-9]{2}-[0-9]{4}-[0-9]{3}-[0-9]?/;
 
-    if(regex.test(elem.ISBN)) {
+    if(!regex.test(elem.ISBN)) {
         throw {
-            mame : "Error de formato:",
+            name : "Error de formato:",
             message : "ISBN no válido."
         };
     }
@@ -125,9 +125,9 @@ function addAt(list, elem, index) {
 
     const regex = /[0-9]{3}-[0-9]{2}-[0-9]{4}-[0-9]{3}-[0-9]?/;
 
-    if(regex.test(elem.ISBN)) {
+    if(!regex.test(elem.ISBN)) {
         throw {
-            mame : "Error de formato:",
+            name : "Error de formato:",
             message : "ISBN no válido."
         };
     }
@@ -213,9 +213,9 @@ function indexOf(list, elem) {
 
     const regex = /[0-9]{3}-[0-9]{2}-[0-9]{4}-[0-9]{3}-[0-9]?/;
 
-    if(regex.test(elem.ISBN)) {
+    if(!regex.test(elem.ISBN)) {
         throw {
-            mame : "Error de formato:",
+            name : "Error de formato:",
             message : "ISBN no válido."
         };
     }
@@ -250,9 +250,9 @@ function lastIndexOf(list, elem) {
 
     const regex = /[0-9]{3}-[0-9]{2}-[0-9]{4}-[0-9]{3}-[0-9]?/;
 
-    if(regex.test(elem.ISBN)) {
+    if(!regex.test(elem.ISBN)) {
         throw {
-            mame : "Error de formato",
+            name : "Error de formato",
             message : "ISBN no válido."
         };
     }
@@ -359,9 +359,9 @@ function removeElement(list, elem) {
 
     const regex = /[0-9]{3}-[0-9]{2}-[0-9]{4}-[0-9]{3}-[0-9]?/;
 
-    if(regex.test(elem.ISBN)) {
+    if(!regex.test(elem.ISBN)) {
         throw {
-            mame : "Error de formato",
+            name : "Error de formato",
             message : "ISBN no válido."
         };
     }
@@ -403,14 +403,14 @@ function set(list, elem, index) {
 
     const regex = /[0-9]{3}-[0-9]{2}-[0-9]{4}-[0-9]{3}-[0-9]?/;
 
-    if(regex.test(elem.ISBN)) {
+    if(!regex.test(elem.ISBN)) {
         throw {
-            mame : "Error de formato",
+            name : "Error de formato",
             message : "ISBN no válido."
         };
     }
 
-    if(index > MAX_SIZE) {
+    if(index < 0 || index > MAX_SIZE) {
         throw {
             name : "Error de lista:",
             message : "Indice fuera de limites de la lista.."
@@ -521,6 +521,13 @@ function test() {
     }
 
     clear(list);    // Vaciamos la lista para probar las demás funciones.
+
+    // ? El libro no tiene un ISBN válido.
+    try {
+        console.log("%cNúmero de elementos en la lista " + add(list, book6), dictionaryColors.setColor("printMessage"));
+    } catch(error) {
+        console.log("%c" + error.name + " " + error.message, dictionaryColors.setColor("exception"));// Aquí se produce una excepción.
+    }
 
     // ! PROBANDO LA FUNCIÓN ADDAT.
     console.log("%cFUNCIÓN ADDAT", dictionaryColors.setColor("functionTitle"));
