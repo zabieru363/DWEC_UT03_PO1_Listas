@@ -240,7 +240,10 @@ function lastIndexOf(list, elem) {
         };
     }
 
-    return indexOf([...list].reverse(), elem);
+    // Encontré este método mirando en el API.
+    return list.findLastIndex(function(book) {
+        return elem.ISBN === book.ISBN;
+    });
 }
 
 /**
