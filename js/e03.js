@@ -50,6 +50,14 @@ function has(set, elem) {
 }
 
 function toString(set) {
+    // Esta excepción me pareció necesaria.
+    if(isEmpty(set)) {
+        throw {
+            name : "Error de conjunto",
+            message : "El conjunto está vacío."
+        };
+    }
+
     return set.reduce(function(str, book, index){
         return index !== 0 ? 
         str + "ISBN: " +  book.ISBN + " - " 
