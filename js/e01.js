@@ -121,7 +121,7 @@ function addAt(list, elem, index) {
         };
     }
 
-    if(index > MAX_SIZE) {
+    if(index < 0 || index > MAX_SIZE) {
         throw {
             name : "Error de lista:",
             message : "Indice fuera de limites de la lista.."
@@ -148,7 +148,7 @@ function get(list, index) {
         };
     }
 
-    if(index > MAX_SIZE) {
+    if(index < 0 || index > MAX_SIZE) {
         throw {
             name : "Error de lista:",
             message : "Indice fuera de limites de la lista.."
@@ -288,7 +288,7 @@ function lastElement(list) {
  * @returns El elemento eliminado.
  */
 function remove(list, index) {
-    if(index > MAX_SIZE) {
+    if(index < 0 || index > MAX_SIZE) {
         throw {
             name : "Error de lista:",
             message : "Indice fuera de limites de la lista.."
