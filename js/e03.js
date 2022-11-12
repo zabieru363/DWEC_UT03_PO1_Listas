@@ -139,10 +139,21 @@ function remove(set, elem) {
     // ! PROBANDO FUNCIÓN ADD.
     console.log("Total de elementos " + add(set, book1));
     
-    // * Intentando añadir un elemento que ya está en el conjunto.
-    console.log("Total de elementos " + add(set, book1));
-    // * Y ahora uno que no está.
-    console.log("Total de elementos " + add(set, book2));
+    // * ERRORES QUE ARROJA ADD.
+
+    // ? El elemento no es un libro.
+    try {
+        console.log("Total de elementos " + add(set, book5));
+    } catch (error) {
+        console.log(error.name + " " + error.message);
+    }
+
+    // ? El elemento ya está en el conjunto.
+    try {
+        console.log("Total de elementos " + add(set, book1));
+    } catch (error) {
+        console.log(error.name + " " + error.message);
+    }
     
     // ! PROBANDO FUNCIÓN HAS.
     console.log(has(set, book1) ? "Encontrado" : "No encontrado");
