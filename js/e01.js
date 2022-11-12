@@ -87,6 +87,15 @@ function add(list, elem) {
         };
     }
 
+    const regex = /[0-9]{3}-[0-9]{2}-[0-9]{4}-[0-9]{3}-[0-9]?/;
+
+    if(regex.test(elem.ISBN)) {
+        throw {
+            mame : "Error de formato:",
+            message : "ISBN no válido."
+        };
+    }
+
     if(isFull(list)) {
         throw {
             name : "Error de lista:",
@@ -111,6 +120,15 @@ function addAt(list, elem, index) {
         throw {
             name : "Error de tipos:",
             message : "El elemento no es un libro."
+        };
+    }
+
+    const regex = /[0-9]{3}-[0-9]{2}-[0-9]{4}-[0-9]{3}-[0-9]?/;
+
+    if(regex.test(elem.ISBN)) {
+        throw {
+            mame : "Error de formato:",
+            message : "ISBN no válido."
         };
     }
 
@@ -193,6 +211,15 @@ function indexOf(list, elem) {
         };
     }
 
+    const regex = /[0-9]{3}-[0-9]{2}-[0-9]{4}-[0-9]{3}-[0-9]?/;
+
+    if(regex.test(elem.ISBN)) {
+        throw {
+            mame : "Error de formato:",
+            message : "ISBN no válido."
+        };
+    }
+
     // Esta excepción me pareció necesaria.
     if(isEmpty(list)) {
         throw {
@@ -218,6 +245,15 @@ function lastIndexOf(list, elem) {
         throw {
             name : "Error de tipos:",
             message : "El elemento no es un libro."
+        };
+    }
+
+    const regex = /[0-9]{3}-[0-9]{2}-[0-9]{4}-[0-9]{3}-[0-9]?/;
+
+    if(regex.test(elem.ISBN)) {
+        throw {
+            mame : "Error de formato",
+            message : "ISBN no válido."
         };
     }
 
@@ -321,6 +357,15 @@ function removeElement(list, elem) {
         };
     }
 
+    const regex = /[0-9]{3}-[0-9]{2}-[0-9]{4}-[0-9]{3}-[0-9]?/;
+
+    if(regex.test(elem.ISBN)) {
+        throw {
+            mame : "Error de formato",
+            message : "ISBN no válido."
+        };
+    }
+
     // Esta excepción me pareció necesaria.
     if(isEmpty(list)) {
         throw {
@@ -353,6 +398,15 @@ function set(list, elem, index) {
         throw {
             name : "Error de tipos:",
             message : "El elemento no es un libro."
+        };
+    }
+
+    const regex = /[0-9]{3}-[0-9]{2}-[0-9]{4}-[0-9]{3}-[0-9]?/;
+
+    if(regex.test(elem.ISBN)) {
+        throw {
+            mame : "Error de formato",
+            message : "ISBN no válido."
         };
     }
 
