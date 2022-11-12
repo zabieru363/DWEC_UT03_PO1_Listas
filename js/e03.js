@@ -30,7 +30,18 @@ function has(set, elem) {
 
 function toString(set) {
     return set.reduce(function(str, book, index){
-        return index !== 0 ? str + " - " +  book.title : str + book.title;
+        return index !== 0 ? 
+        str + "ISBN: " +  book.ISBN + " - " 
+        + "TITLE: " +   book.title + " - "
+        + "AUTHOR: " + book.author + " - "
+        + "DATE: " + book.publicationDate + " - "
+        + "PRICE: " + book.price + "\n"
+
+        : str + "ISBN: " +  book.ISBN + " " 
+        + "TITLE: " +   book.title + " "
+        + "AUTHOR: " + book.author + " "
+        + "DATE: " + book.publicationDate + " "
+        + "PRICE: " + book.price;
     }, "");
 }
 
