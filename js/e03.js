@@ -167,6 +167,15 @@ function remove(set, elem) {
     
     // * Y ahora uno que no está.
     console.log(has(set, book3) ? "Encontrado" : "No encontrado");
+
+    // * ERRORES QUE ARROJA HAS.
+
+    // ? El elemento no es un libro.
+    try {
+        console.log("Total de elementos " + has(set, book5));
+    } catch (error) {
+        console.log(error.name + " " + error.message);
+    }
     
     // ! PROBANDO FUNCIÓN TOSTRING.
     console.log(toString(set));
