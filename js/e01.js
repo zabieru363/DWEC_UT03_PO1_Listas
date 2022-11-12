@@ -854,7 +854,7 @@ function test() {
 
     // ! PROBANDO LA FUNCIÓN SET.
     console.log("%cFUNCIÓN SET", dictionaryColors.setColor("functionTitle"));
-    console.log(set(list, book4, 0));   // Reemplaza el único libro que hay en este momento (book3) por book4.
+    console.log(...set(list, book4, 0));   // Reemplaza el único libro que hay en este momento (book3) por book4.
 
     console.log("%cERRORES SET", dictionaryColors.setColor("functionTitle"));
 
@@ -863,7 +863,7 @@ function test() {
     // ? El elemento no es un libro.
     console.log("%c- El elemento no es un libro.", dictionaryColors.setColor("errorName"));
     try {
-        console.log(set(list, book5, 0));
+        console.log(...set(list, book5, 0));
     } catch(error) {
         console.log("%c" + error.name + " " + error.message, dictionaryColors.setColor("exception"));  // Aquí se produce una excepción.
     }
@@ -871,7 +871,7 @@ function test() {
     // ? El libro no tiene un ISBN válido.
     console.log("%c- El libro no tiene un ISBN válido.", dictionaryColors.setColor("errorName"));
     try {
-        console.log(removeElement(list, book6));
+        console.log(...set(list, book6, 0));
     } catch(error) {
         console.log("%c" + error.name + " " + error.message, dictionaryColors.setColor("exception"));   // Aquí se produce una excepción.
     }
@@ -879,7 +879,7 @@ function test() {
     // ? El indice está fuera de los limites de la lista.
     console.log("%c- El indice está fuera de los limites de la lista.", dictionaryColors.setColor("errorName"));
     try {
-        console.log(set(list, book2, 22));
+        console.log(...set(list, book2, 22));
     } catch(error) {
         console.log("%c" + error.name + " " + error.message, dictionaryColors.setColor("exception"));  // Aquí se produce una excepción.
     }
@@ -889,7 +889,7 @@ function test() {
     clear(list);
 
     try {
-        console.log(set(list, book2, 0));
+        console.log(...set(list, book2, 0));
     } catch(error) {
         console.log("%c" + error.name + " " + error.message, dictionaryColors.setColor("exception"));  // Aquí se produce una excepción.
     }
