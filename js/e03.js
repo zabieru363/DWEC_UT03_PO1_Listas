@@ -79,6 +79,13 @@ function clear(set) {
 }
 
 function remove(set, elem) {
+    if(!elem.ISBN || !elem.title) {
+        throw {
+            name : "Error de tipos:",
+            message : "El elemento no es un libro."
+        };
+    }
+
     let removed = false;
 
     const pos = set.findIndex(function(element) {
