@@ -187,6 +187,20 @@ function remove(set, elem) {
     
     // ! PROBANDO FUNCIÓN TOSTRING.
     console.log(toString(set));
+
+    // * ERRORES QUE ARROJA TOSTRING.
+
+    // ? El conjunto está vacío.
+    clear(set);
+
+    try {
+        console.log(toString(set));
+    } catch (error) {
+        console.log(error.name + " " + error.message);
+    }
+
+    console.log("Total de elementos " + add(set, book1));
+    console.log("Total de elementos " + add(set, book2));
     
     // ! PROBANDO FUNCIÓN CLEAR.
     clear(set);
