@@ -78,6 +78,15 @@ function add(list, elem) {
         };
     }
 
+    const regex = /[0-9]{3}-[0-9]{2}-[0-9]{4}-[0-9]{3}-[0-9]?/;
+
+    if(!regex.test(elem.ISBN)) {
+        throw {
+            name : "Error de formato:",
+            message : "ISBN no válido."
+        };
+    }
+
     if(isFull(list)) {
         throw {
             name : "Error de lista:",
@@ -111,7 +120,7 @@ function get(list, index) {
         };
     }
 
-    if(index > MAX_SIZE) {
+    if(index < 0 || index > MAX_SIZE) {
         throw {
             name : "Error de lista:",
             message : "Indice fuera de limites de la lista.."
@@ -164,6 +173,15 @@ function indexOf(list, elem) {
         throw {
             name : "Error de tipos:",
             message : "El elemento no es un libro."
+        };
+    }
+
+    const regex = /[0-9]{3}-[0-9]{2}-[0-9]{4}-[0-9]{3}-[0-9]?/;
+
+    if(!regex.test(elem.ISBN)) {
+        throw {
+            name : "Error de formato:",
+            message : "ISBN no válido."
         };
     }
 
@@ -236,7 +254,7 @@ function lastElement(list) {
  * @returns El elemento eliminado.
  */
 function remove(list, index) {
-    if(index > MAX_SIZE) {
+    if(index < 0 || index > MAX_SIZE) {
         throw {
             name : "Error de lista:",
             message : "Indice fuera de limites de la lista.."
@@ -266,6 +284,15 @@ function removeElement(list, elem) {
         throw {
             name : "Error de tipos:",
             message : "El elemento no es un libro."
+        };
+    }
+
+    const regex = /[0-9]{3}-[0-9]{2}-[0-9]{4}-[0-9]{3}-[0-9]?/;
+
+    if(!regex.test(elem.ISBN)) {
+        throw {
+            name : "Error de formato:",
+            message : "ISBN no válido."
         };
     }
 
@@ -368,6 +395,14 @@ function test() {
         console.log("%c" + error.name + " " + error.message, dictionaryColors.setColor("exception"));  // Aquí se produce una excepción.
     }
 
+    // ? El libro no tiene un ISBN válido.
+    console.log("%c- El libro no tiene un ISBN válido.", dictionaryColors.setColor("errorName"));
+    try {
+        console.log("%cNúmero de elementos en la lista " + add(list, book6), dictionaryColors.setColor("printMessage"));
+    } catch(error) {
+        console.log("%c" + error.name + " " + error.message, dictionaryColors.setColor("exception"));   // Aquí se produce una excepción.
+    }
+
     // ? La lista está llena.
     console.log("%c- La lista está llena", dictionaryColors.setColor("errorName"));
     console.log("%cNúmero de elementos en la lista " + add(list, book1), dictionaryColors.setColor("printMessage"));
@@ -433,13 +468,12 @@ function test() {
     console.log("%cNúmero de elementos en la lista " + add(list, book1), dictionaryColors.setColor("printMessage"));
     console.log("%cNúmero de elementos en la lista " + add(list, book2), dictionaryColors.setColor("printMessage"));
     console.log("%cNúmero de elementos en la lista " + add(list, book3), dictionaryColors.setColor("printMessage"));
-    console.log("%cNúmero de elementos en la lista " + add(list, book4), dictionaryColors.setColor("printMessage"));  
 
     // ! PROBANDO LA FUNCIÓN INDEXOF.
     console.log("%cFUNCIÓN INDEXOF", dictionaryColors.setColor("functionTitle"));
     let pos = indexOf(list, book1);
     console.log(pos !== -1 ? "%cEl elemento se encuentra en la posición " + pos : "%cElemento no encontrado", dictionaryColors.setColor("printMessage"));  // Encuentra el libro
-    pos = indexOf(list, book6);
+    pos = indexOf(list, book4);
     console.log(pos !== -1 ? "%cEl elemento se encuentra en la posición " + pos : "%cElemento no encontrado", dictionaryColors.setColor("printMessage"));   // Aquí no lo encuentra.
 
     // * ERRORES QUE ARROJA INDEXOF.
@@ -453,6 +487,14 @@ function test() {
         console.log(pos !== -1 ? "El elemento se encuentra en la posición " + pos : "Elemento no encontrado"); 
     } catch(error) {
         console.log("%c" + error.name + " " + error.message, dictionaryColors.setColor("exception"));  // Aquí se produce una excepción.
+    }
+
+    // ? El libro no tiene un ISBN válido.
+    console.log("%c- El libro no tiene un ISBN válido.", dictionaryColors.setColor("errorName"));
+    try {
+        console.log("%cNúmero de elementos en la lista " + add(list, book6), dictionaryColors.setColor("printMessage"));
+    } catch(error) {
+        console.log("%c" + error.name + " " + error.message, dictionaryColors.setColor("exception"));   // Aquí se produce una excepción.
     }
 
     // ? La lista está vacía.
@@ -531,7 +573,7 @@ function test() {
 
     // ! PROBANDO LA FUNCIÓN REMOVE.
     console.log("%cFUNCIÓN REMOVE", dictionaryColors.setColor("functionTitle"));
-    console.log(remove(list, 0));   // Quito el primer elemento de la lista.
+    console.log(...remove(list, 0));   // Quito el primer elemento de la lista.
 
     console.log("%cERRORES REMOVE", dictionaryColors.setColor("functionTitle"));
 
@@ -540,7 +582,7 @@ function test() {
     // ? El indice está fuera de los limites de la lista.
     console.log("%c- El indice está fuera de los limites de la lista.", dictionaryColors.setColor("errorName"));
     try {
-        console.log(remove(list, 22));
+        console.log(...remove(list, 22));
     } catch(error) {
         console.log("%c" + error.name + " " + error.message, dictionaryColors.setColor("exception"));  // Aquí se produce una excepción.
     }
@@ -550,7 +592,7 @@ function test() {
     clear(list);
 
     try {
-        console.log(remove(list, 0));
+        console.log(...remove(list, 0));
     } catch(error) {
         console.log("%c" + error.name + " " + error.message, dictionaryColors.setColor("exception"));  // Aquí se produce una excepción.
     }
@@ -577,6 +619,14 @@ function test() {
         console.log(removeElement(list, book5));
     } catch(error) {
         console.log("%c" + error.name + " " + error.message, dictionaryColors.setColor("exception"));  // Aquí se produce una excepción.
+    }
+
+    // ? El libro no tiene un ISBN válido.
+    console.log("%c- El libro no tiene un ISBN válido.", dictionaryColors.setColor("errorName"));
+    try {
+        console.log("%cNúmero de elementos en la lista " + add(list, book6), dictionaryColors.setColor("printMessage"));
+    } catch(error) {
+        console.log("%c" + error.name + " " + error.message, dictionaryColors.setColor("exception"));   // Aquí se produce una excepción.
     }
 
     // ? La lista está vacía.
