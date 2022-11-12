@@ -20,6 +20,15 @@ function add(set, elem) {
         };
     }
 
+    const regex = /[0-9]{3}-[0-9]{2}-[0-9]{4}-[0-9]{3}-[0-9]?/;
+
+    if(!regex.test(elem.ISBN)) {
+        throw {
+            name : "Error de formato:",
+            message : "ISBN no válido."
+        };
+    }
+
     const found = set.some(function(element) {
         return elem.ISBN === element.ISBN;
     });
@@ -41,6 +50,15 @@ function has(set, elem) {
         throw {
             name : "Error de tipos:",
             message : "El elemento no es un libro."
+        };
+    }
+
+    const regex = /[0-9]{3}-[0-9]{2}-[0-9]{4}-[0-9]{3}-[0-9]?/;
+
+    if(!regex.test(elem.ISBN)) {
+        throw {
+            name : "Error de formato:",
+            message : "ISBN no válido."
         };
     }
 
@@ -83,6 +101,15 @@ function remove(set, elem) {
         throw {
             name : "Error de tipos:",
             message : "El elemento no es un libro."
+        };
+    }
+
+    const regex = /[0-9]{3}-[0-9]{2}-[0-9]{4}-[0-9]{3}-[0-9]?/;
+
+    if(!regex.test(elem.ISBN)) {
+        throw {
+            name : "Error de formato:",
+            message : "ISBN no válido."
         };
     }
 
