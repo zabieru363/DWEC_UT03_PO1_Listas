@@ -37,6 +37,13 @@ function add(set, elem) {
 }
 
 function has(set, elem) {
+    if(!elem.ISBN || !elem.title) {
+        throw {
+            name : "Error de tipos:",
+            message : "El elemento no es un libro."
+        };
+    }
+
     return set.some(function(element) {
         return elem.ISBN === element.ISBN;
     });
