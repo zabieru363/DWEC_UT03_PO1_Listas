@@ -13,22 +13,51 @@ function size(set) {
 }
 
 function add(set, elem) {
+    if(!elem.ISBN || !elem.title) {
+        throw {
+            name : "Error de tipos:",
+            message : "El elemento no es un libro"
+        };
+    }
+
     const found = set.some(function(element) {
         return elem.ISBN === element.ISBN;
     });
 
-    if(!found) set.push(elem);
+    if(found) {
+        throw {
+            name : "Error de conjunto:",
+            message : "El elemento ya está en el conjunto"
+        };
+    }
+
+    set.push(elem);
 
     return size(set);
 }
 
 function has(set, elem) {
+    if(!elem.ISBN || !elem.title) {
+        throw {
+            name : "Error de tipos:",
+            message : "El elemento no es un libro."
+        };
+    }
+
     return set.some(function(element) {
         return elem.ISBN === element.ISBN;
     });
 }
 
 function toString(set) {
+    // Esta excepción me pareció necesaria.
+    if(isEmpty(set)) {
+        throw {
+            name : "Error de conjunto",
+            message : "El conjunto está vacío."
+        };
+    }
+
     return set.reduce(function(str, book, index){
         return index !== 0 ? 
         str + "ISBN: " +  book.ISBN + " - " 
@@ -50,6 +79,13 @@ function clear(set) {
 }
 
 function remove(set, elem) {
+    if(!elem.ISBN || !elem.title) {
+        throw {
+            name : "Error de tipos:",
+            message : "El elemento no es un libro."
+        };
+    }
+
     let removed = false;
 
     const pos = set.findIndex(function(element) {
@@ -125,19 +161,53 @@ function remove(set, elem) {
     // ! PROBANDO FUNCIÓN ADD.
     console.log("Total de elementos " + add(set, book1));
     
-    // * Intentando añadir un elemento que ya está en el conjunto.
-    console.log("Total de elementos " + add(set, book1));
-    // * Y ahora uno que no está.
-    console.log("Total de elementos " + add(set, book2));
+    // * ERRORES QUE ARROJA ADD.
+
+    // ? El elemento no es un libro.
+    try {
+        console.log("Total de elementos " + add(set, book5));
+    } catch (error) {
+        console.log(error.name + " " + error.message);
+    }
+
+    // ? El elemento ya está en el conjunto.
+    try {
+        console.log("Total de elementos " + add(set, book1));
+    } catch (error) {
+        console.log(error.name + " " + error.message);
+    }
     
     // ! PROBANDO FUNCIÓN HAS.
     console.log(has(set, book1) ? "Encontrado" : "No encontrado");
     
     // * Y ahora uno que no está.
     console.log(has(set, book3) ? "Encontrado" : "No encontrado");
+
+    // * ERRORES QUE ARROJA HAS.
+
+    // ? El elemento no es un libro.
+    try {
+        console.log("Total de elementos " + has(set, book5));
+    } catch (error) {
+        console.log(error.name + " " + error.message);
+    }
     
     // ! PROBANDO FUNCIÓN TOSTRING.
     console.log(toString(set));
+
+    // * ERRORES QUE ARROJA TOSTRING.
+
+    // ? El conjunto está vacío.
+    clear(set);
+
+    try {
+        console.log(toString(set));
+    } catch (error) {
+        console.log(error.name + " " + error.message);
+    }
+
+    console.log("Total de elementos " + add(set, book1));
+    console.log("Total de elementos " + add(set, book2));
     
     // ! PROBANDO FUNCIÓN CLEAR.
     clear(set);
@@ -151,6 +221,15 @@ function remove(set, elem) {
 
     // * Intentamos eliminar un libro que no está en el conjunto.
     console.log(remove(set, book3) ? "Eliminado" : "No se pudo eliminar el libro.");
+
+    // * ERRORES QUE ARROJA REMOVE.
+
+    // ? El elemento no es un libro.
+    try {
+        console.log(remove(set, book5) ? "Eliminado" : "No se pudo eliminar el libro.");
+    } catch(error) {
+        console.log(error.name + " " + error.message);
+    }
 }
 
 test();
