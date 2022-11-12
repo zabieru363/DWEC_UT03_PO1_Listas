@@ -1,5 +1,24 @@
 "use strict";
 
+// * VARIABLES AUXILIARES.
+
+/**
+ * Variable JSON que hace de diccionario de colores para
+ * mostrar con colores los mensajes por pantalla. 
+ */
+ const dictionaryColors = {
+    printMessage : "#00C2C8",
+    functionTitle : "#00C800",
+    exception : "#CD0000",
+    errorName : "#0500FF",
+
+    setColor : function(color) {
+        return "color: " + dictionaryColors[color];
+    }
+};
+
+// * FUNCIONES.
+
 function create() {
     return [];
 }
@@ -180,21 +199,27 @@ function remove(set, elem) {
     const set = create();
 
     // ! PROBANDO FUNCIÓN ISEMPTY.
-    console.log(isEmpty(set) ? "El conjunto está vacío" : "");
+    console.log("%cFUNCIÓN ISEMPTY", dictionaryColors.setColor("functionTitle"));
+    console.log(isEmpty(set) ? "%cEl conjunto está vacío" : "%c", dictionaryColors.setColor("printMessage"));
 
     // ! PROBANDO FUNCIÓN SIZE.
-    console.log("Tamaño del conjunto " + size(set));
+    console.log("%cFUNCIÓN SIZE", dictionaryColors.setColor("functionTitle"));
+    console.log("%cTamaño del conjunto " + size(set), dictionaryColors.setColor("printMessage"));
     
     // ! PROBANDO FUNCIÓN ADD.
-    console.log("Total de elementos " + add(set, book1));
+    console.log("%cFUNCIÓN SIZE", dictionaryColors.setColor("functionTitle"));
+    console.log("%cTotal de elementos " + add(set, book1), dictionaryColors.setColor("printMessage"));
     
     // * ERRORES QUE ARROJA ADD.
 
+    console.log("%cERRORES ADD", dictionaryColors.setColor("functionTitle"));
+
     // ? El elemento no es un libro.
+    console.log("%cEl elemento no es un libro", dictionaryColors.setColor("errorName"));
     try {
         console.log("Total de elementos " + add(set, book5));
     } catch (error) {
-        console.log(error.name + " " + error.message);
+        console.log("%c" + error.name + " " + error.message, dictionaryColors.setColor("exception"));
     }
 
     // ? El libro no tiene un ISBN válido.
@@ -206,25 +231,27 @@ function remove(set, elem) {
     }
 
     // ? El elemento ya está en el conjunto.
+    console.log("%c- El elemento ya está en el conjunto.", dictionaryColors.setColor("errorName"));
     try {
         console.log("Total de elementos " + add(set, book1));
     } catch (error) {
-        console.log(error.name + " " + error.message);
+        console.log("%c" + error.name + " " + error.message, dictionaryColors.setColor("exception"));
     }
     
     // ! PROBANDO FUNCIÓN HAS.
-    console.log(has(set, book1) ? "Encontrado" : "No encontrado");
+    console.log(has(set, book1) ? "%cEncontrado" : "%cNo encontrado", dictionaryColors.setColor("printMessage"));
     
     // * Y ahora uno que no está.
-    console.log(has(set, book3) ? "Encontrado" : "No encontrado");
+    console.log(has(set, book3) ? "%cEncontrado" : "%cNo encontrado", dictionaryColors.setColor("printMessage"));
 
     // * ERRORES QUE ARROJA HAS.
 
     // ? El elemento no es un libro.
+    console.log("%c- El elemento no es un libro.", dictionaryColors.setColor("errorName"));
     try {
         console.log("Total de elementos " + has(set, book5));
     } catch (error) {
-        console.log(error.name + " " + error.message);
+        console.log("%c" + error.name + " " + error.message, dictionaryColors.setColor("exception")); 
     }
 
     // ? El libro no tiene un ISBN válido.
@@ -236,42 +263,44 @@ function remove(set, elem) {
     }
     
     // ! PROBANDO FUNCIÓN TOSTRING.
-    console.log(toString(set));
+    console.log("%c" + toString(set), dictionaryColors.setColor("printMessage"));
 
     // * ERRORES QUE ARROJA TOSTRING.
 
     // ? El conjunto está vacío.
+    console.log("%c- El conjunto está vacío.", dictionaryColors.setColor("errorName"));
     clear(set);
 
     try {
         console.log(toString(set));
     } catch (error) {
-        console.log(error.name + " " + error.message);
+        console.log("%c" + error.name + " " + error.message, dictionaryColors.setColor("exception")); 
     }
 
-    console.log("Total de elementos " + add(set, book1));
-    console.log("Total de elementos " + add(set, book2));
+    console.log("%cTotal de elementos " + add(set, book1), dictionaryColors.setColor("printMessage"));
+    console.log("%cTotal de elementos " + add(set, book2), dictionaryColors.setColor("printMessage"));
     
     // ! PROBANDO FUNCIÓN CLEAR.
     clear(set);
-    console.log("Tamaño del conjunto " + size(set));
+    console.log("%cTamaño del conjunto " + size(set), dictionaryColors.setColor("printMessage"));
 
-    console.log("Total de elementos " + add(set, book1));
-    console.log("Total de elementos " + add(set, book2));
+    console.log("%cTotal de elementos " + add(set, book1), dictionaryColors.setColor("printMessage"));
+    console.log("%cTotal de elementos " + add(set, book2), dictionaryColors.setColor("printMessage"));
 
     // ! PROBANDO FUNCIÓN REMOVE.
-    console.log(remove(set, book1) ? "Eliminado" : "No se pudo eliminar el libro.");
+    console.log(remove(set, book1) ? "%cEliminado" : "%cNo se pudo eliminar el libro.", dictionaryColors.setColor("printMessage"));
 
     // * Intentamos eliminar un libro que no está en el conjunto.
-    console.log(remove(set, book3) ? "Eliminado" : "No se pudo eliminar el libro.");
+    console.log(remove(set, book3) ? "%cEliminado" : "%cNo se pudo eliminar el libro.", dictionaryColors.setColor("printMessage"));
 
     // * ERRORES QUE ARROJA REMOVE.
 
     // ? El elemento no es un libro.
+    console.log("%c- El elemento no es un libro.", dictionaryColors.setColor("errorName"));
     try {
         console.log(remove(set, book5) ? "Eliminado" : "No se pudo eliminar el libro.");
     } catch(error) {
-        console.log(error.name + " " + error.message);
+        console.log("%c" + error.name + " " + error.message, dictionaryColors.setColor("exception"));
     }
 
     // ? El libro no tiene un ISBN válido.
