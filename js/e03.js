@@ -221,6 +221,15 @@ function remove(set, elem) {
 
     // * Intentamos eliminar un libro que no está en el conjunto.
     console.log(remove(set, book3) ? "Eliminado" : "No se pudo eliminar el libro.");
+
+    // * ERRORES QUE ARROJA REMOVE.
+
+    // ? El elemento no es un libro.
+    try {
+        console.log(remove(set, book5) ? "Eliminado" : "No se pudo eliminar el libro.");
+    } catch(error) {
+        console.log(error.name + " " + error.message);
+    }
 }
 
 test();
