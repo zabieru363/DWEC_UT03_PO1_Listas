@@ -13,11 +13,25 @@ function size(set) {
 }
 
 function add(set, elem) {
+    if(!elem.ISBN || !elem.title) {
+        throw {
+            name : "Error de tipos:",
+            message : "El elemento no es un libro"
+        };
+    }
+
     const found = set.some(function(element) {
         return elem.ISBN === element.ISBN;
     });
 
-    if(!found) set.push(elem);
+    if(found) {
+        throw {
+            name : "Error de conjunto:",
+            message : "El elemento ya está en el conjunto"
+        };
+    }
+
+    set.push(elem);
 
     return size(set);
 }
