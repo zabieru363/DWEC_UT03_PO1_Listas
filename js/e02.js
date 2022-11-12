@@ -78,6 +78,15 @@ function add(list, elem) {
         };
     }
 
+    const regex = /[0-9]{3}-[0-9]{2}-[0-9]{4}-[0-9]{3}-[0-9]?/;
+
+    if(!regex.test(elem.ISBN)) {
+        throw {
+            name : "Error de formato:",
+            message : "ISBN no válido."
+        };
+    }
+
     if(isFull(list)) {
         throw {
             name : "Error de lista:",
@@ -111,7 +120,7 @@ function get(list, index) {
         };
     }
 
-    if(index > MAX_SIZE) {
+    if(index < 0 || index > MAX_SIZE) {
         throw {
             name : "Error de lista:",
             message : "Indice fuera de limites de la lista.."
@@ -164,6 +173,15 @@ function indexOf(list, elem) {
         throw {
             name : "Error de tipos:",
             message : "El elemento no es un libro."
+        };
+    }
+
+    const regex = /[0-9]{3}-[0-9]{2}-[0-9]{4}-[0-9]{3}-[0-9]?/;
+
+    if(!regex.test(elem.ISBN)) {
+        throw {
+            name : "Error de formato:",
+            message : "ISBN no válido."
         };
     }
 
@@ -236,7 +254,7 @@ function lastElement(list) {
  * @returns El elemento eliminado.
  */
 function remove(list, index) {
-    if(index > MAX_SIZE) {
+    if(index < 0 || index > MAX_SIZE) {
         throw {
             name : "Error de lista:",
             message : "Indice fuera de limites de la lista.."
@@ -266,6 +284,15 @@ function removeElement(list, elem) {
         throw {
             name : "Error de tipos:",
             message : "El elemento no es un libro."
+        };
+    }
+
+    const regex = /[0-9]{3}-[0-9]{2}-[0-9]{4}-[0-9]{3}-[0-9]?/;
+
+    if(!regex.test(elem.ISBN)) {
+        throw {
+            name : "Error de formato:",
+            message : "ISBN no válido."
         };
     }
 
